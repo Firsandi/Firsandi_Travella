@@ -32,8 +32,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 WrapContents = false, // 🔥 Mencegah elemen berpindah ke bawah secara otomatis
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Size = new Size(800, 1200), // 🔥 Ukuran yang bisa diubah sesuai keinginan
-                Location = new Point(50, 180) // 🔥 Posisi awal bisa disesuaikan manual
+                Location = new Point(400, 180) // 🔥 Posisi lebih ke kanan
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
@@ -61,13 +60,12 @@ namespace Firsandi_Travella.Views.V_Admin
             {
                 Panel card = new Panel
                 {
-                    Size = new Size(1000, 300),
+                    Size = new Size(600, 100),
                     BackColor = Color.FromArgb(173, 205, 255),
                     Padding = new Padding(10),
                     Margin = new Padding(15), // 🔥 Jarak antar elemen lebih leluasa
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(50, 50), // 🔥 Posisi bisa diubah sesuai kebutuhan
-                    AutoSize = true
+              
                 };
 
                 PictureBox pb = new PictureBox
@@ -123,7 +121,7 @@ namespace Firsandi_Travella.Views.V_Admin
             }
 
             // 🔥 PENYESUAIAN: Pastikan panel tidak terkunci ke kanan
-            flowLayoutPanelTrips.Left = (this.ClientSize.Width - flowLayoutPanelTrips.Width) / 2;
+            //flowLayoutPanelTrips.Left = (this.ClientSize.Width - flowLayoutPanelTrips.Width) / 2;
         }
 
 

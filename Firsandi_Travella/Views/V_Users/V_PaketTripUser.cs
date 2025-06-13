@@ -34,8 +34,7 @@ namespace Firsandi_Travella.Views.V_Users
                 WrapContents = false,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Size = new Size(800, 1200),
-                Location = new Point(50, 180) // Sama dengan versi admin
+                Location = new Point(400, 180) // 🔥 Posisi lebih ke kanan
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
@@ -55,8 +54,7 @@ namespace Firsandi_Travella.Views.V_Users
                     Padding = new Padding(10),
                     Margin = new Padding(15),
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(50, 50),
-                    AutoSize = false,
+                    
                 };
 
                 PictureBox pb = new PictureBox
