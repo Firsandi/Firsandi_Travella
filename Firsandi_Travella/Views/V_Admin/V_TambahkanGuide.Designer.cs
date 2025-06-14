@@ -29,12 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_TambahkanGuide));
-            pictureBox26 = new PictureBox();
-            pictureBox16 = new PictureBox();
-            pictureBox15 = new PictureBox();
-            pictureBox14 = new PictureBox();
+            TombolTambah = new PictureBox();
             pictureBox13 = new PictureBox();
-            pictureBox11 = new PictureBox();
             pictureBox10 = new PictureBox();
             pictureBox27 = new PictureBox();
             pictureBox12 = new PictureBox();
@@ -47,12 +43,10 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            TBNama = new TextBox();
+            TBNomor = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)TombolTambah).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox27).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -67,45 +61,16 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox26
+            // TombolTambah
             // 
-            pictureBox26.Image = (Image)resources.GetObject("pictureBox26.Image");
-            pictureBox26.Location = new Point(903, 569);
-            pictureBox26.Name = "pictureBox26";
-            pictureBox26.Size = new Size(207, 67);
-            pictureBox26.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox26.TabIndex = 60;
-            pictureBox26.TabStop = false;
-            // 
-            // pictureBox16
-            // 
-            pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
-            pictureBox16.Location = new Point(309, 475);
-            pictureBox16.Name = "pictureBox16";
-            pictureBox16.Size = new Size(640, 46);
-            pictureBox16.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox16.TabIndex = 59;
-            pictureBox16.TabStop = false;
-            // 
-            // pictureBox15
-            // 
-            pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
-            pictureBox15.Location = new Point(309, 432);
-            pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(240, 37);
-            pictureBox15.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox15.TabIndex = 58;
-            pictureBox15.TabStop = false;
-            // 
-            // pictureBox14
-            // 
-            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(309, 366);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(640, 46);
-            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox14.TabIndex = 57;
-            pictureBox14.TabStop = false;
+            TombolTambah.Image = (Image)resources.GetObject("TombolTambah.Image");
+            TombolTambah.Location = new Point(903, 569);
+            TombolTambah.Name = "TombolTambah";
+            TombolTambah.Size = new Size(207, 67);
+            TombolTambah.SizeMode = PictureBoxSizeMode.Zoom;
+            TombolTambah.TabIndex = 60;
+            TombolTambah.TabStop = false;
+            TombolTambah.Click += TombolTambah_Click;
             // 
             // pictureBox13
             // 
@@ -116,16 +81,6 @@
             pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox13.TabIndex = 56;
             pictureBox13.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(309, 250);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(640, 46);
-            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox11.TabIndex = 55;
-            pictureBox11.TabStop = false;
             // 
             // pictureBox10
             // 
@@ -246,17 +201,35 @@
             pictureBox1.TabIndex = 44;
             pictureBox1.TabStop = false;
             // 
+            // TBNama
+            // 
+            TBNama.BorderStyle = BorderStyle.None;
+            TBNama.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBNama.Location = new Point(309, 251);
+            TBNama.Margin = new Padding(3, 4, 3, 4);
+            TBNama.Name = "TBNama";
+            TBNama.Size = new Size(588, 35);
+            TBNama.TabIndex = 61;
+            // 
+            // TBNomor
+            // 
+            TBNomor.BorderStyle = BorderStyle.None;
+            TBNomor.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBNomor.Location = new Point(309, 376);
+            TBNomor.Margin = new Padding(3, 4, 3, 4);
+            TBNomor.Name = "TBNomor";
+            TBNomor.Size = new Size(588, 35);
+            TBNomor.TabIndex = 62;
+            // 
             // V_TambahkanGuide
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 673);
-            Controls.Add(pictureBox26);
-            Controls.Add(pictureBox16);
-            Controls.Add(pictureBox15);
-            Controls.Add(pictureBox14);
+            Controls.Add(TBNomor);
+            Controls.Add(TBNama);
+            Controls.Add(TombolTambah);
             Controls.Add(pictureBox13);
-            Controls.Add(pictureBox11);
             Controls.Add(pictureBox10);
             Controls.Add(pictureBox27);
             Controls.Add(pictureBox12);
@@ -271,12 +244,8 @@
             Controls.Add(pictureBox1);
             Name = "V_TambahkanGuide";
             Text = "V_TambahkanGuide";
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TombolTambah).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox27).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -290,16 +259,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox26;
-        private PictureBox pictureBox16;
-        private PictureBox pictureBox15;
-        private PictureBox pictureBox14;
+        private PictureBox TombolTambah;
         private PictureBox pictureBox13;
-        private PictureBox pictureBox11;
         private PictureBox pictureBox10;
         private PictureBox pictureBox27;
         private PictureBox pictureBox12;
@@ -312,5 +278,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
+        private TextBox TBNama;
+        private TextBox TBNomor;
     }
 }

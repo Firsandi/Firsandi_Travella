@@ -63,12 +63,12 @@ namespace Firsandi_Travella.Database
             
         }
 
-        public void UpdateGuide(GuideModels guide)
+        public bool UpdateGuide(GuideModels guide)
         {
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string query = "UPDATE guides SET nama = @nama, kontak = @kontak, WHERE id = @id";
+                string query = "UPDATE guides SET nama = @nama, kontak = @kontak WHERE guide_id = @id";
 
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
@@ -76,14 +76,14 @@ namespace Firsandi_Travella.Database
                     cmd.Parameters.AddWithValue("@kontak", guide.Kontak);
                     cmd.Parameters.AddWithValue("@id", guide.Id);
 
-                    cmd.ExecuteNonQuery();
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
 
         public void DeleteGuide(int id)
         {
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=123;Database=PBO"))
+            using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
                 string query = "DELETE FROM guides WHERE guide_id = @id";
@@ -95,6 +95,24 @@ namespace Firsandi_Travella.Database
                 }
             }
         }
+
+        public bool CekGuide(int guideId)
+        {
+            using (var conn = _dbKoneksi.Database())
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM paket_trips WHERE guide_id = @guideId";
+
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@guideId", guideId);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0; // 🔥 Jika count > 0, berarti guide sedang digunakan
+                }
+            }
+        }
+
 
 
     }

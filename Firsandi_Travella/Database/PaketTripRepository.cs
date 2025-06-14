@@ -51,7 +51,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string sql = "INSERT INTO paket_trips (nama, harga, deskripsi, gambar_path) VALUES (@nama, @harga, @deskripsi, @gambar_path)";
+                string sql = "INSERT INTO paket_trips (nama, harga,guide_id, deskripsi, gambar_path) VALUES (@nama, @harga,@guideId, @deskripsi, @gambar_path)";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {

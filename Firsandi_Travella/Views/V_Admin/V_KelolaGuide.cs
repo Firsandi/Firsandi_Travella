@@ -29,9 +29,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 AutoScroll = true,
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                //Size = new Size(100, 100),
+                Size = new Size(800, 500),
                 Location = new Point(400, 180) // 🔥 Posisi lebih ke kanan
             };
 
@@ -61,7 +59,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = guide.Nama,
                     Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                    AutoSize = true,    
+                    AutoSize = true,
                     Location = new Point(15, 50)
 
                 };
@@ -79,6 +77,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = "Edit",
                     Tag = guide,
+                    AutoSize = true,
                     Location = new Point(450, 20),
 
                 };
@@ -88,12 +87,13 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = "🗑",
                     Tag = guide,
+                    AutoSize = true,
                     Location = new Point(520, 20),
 
                 };
                 btnDelete.Click += BtnDelete_Click;
 
-               
+
                 card.Controls.Add(lblNama);
                 card.Controls.Add(lblKontak);
                 card.Controls.Add(btnEdit);
@@ -107,7 +107,7 @@ namespace Firsandi_Travella.Views.V_Admin
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             var guide = (GuideModels)((Button)sender).Tag;
-            V_EditGuide editGuide = new V_EditGuide();
+            V_EditGuide editGuide = new V_EditGuide(guide);
             if (editGuide.ShowDialog() == DialogResult.OK)
             {
                 _presenter.LoadGuides();
@@ -118,12 +118,13 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             var guide = (GuideModels)((Button)sender).Tag;
             var confirm = MessageBox.Show($"Yakin ingin menghapus guide {guide.Nama}?", "Konfirmasi", MessageBoxButtons.YesNo);
+
             if (confirm == DialogResult.Yes)
             {
                 _presenter.DeleteGuide(guide.Id);
-                _presenter.LoadGuides();
             }
         }
+        
 
         public void ShowError(string message)
         {
@@ -153,6 +154,13 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
             v_DashboardAdmin.Show();
+            this.Hide();
+        }
+
+        private void TambahGuide_Click_1(object sender, EventArgs e)
+        {
+            V_TambahkanGuide v_TambahkanGuide = new V_TambahkanGuide();
+            v_TambahkanGuide.Show();
             this.Hide();
         }
     }
