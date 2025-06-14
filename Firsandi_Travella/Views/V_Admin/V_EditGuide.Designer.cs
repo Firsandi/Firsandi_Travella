@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_EditGuide));
-            pictureBox26 = new PictureBox();
-            pictureBox14 = new PictureBox();
+            Ubah = new PictureBox();
             pictureBox13 = new PictureBox();
-            pictureBox11 = new PictureBox();
             pictureBox10 = new PictureBox();
             pictureBox27 = new PictureBox();
             pictureBox12 = new PictureBox();
@@ -45,10 +43,10 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            TBNama = new TextBox();
+            TBNomor = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)Ubah).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox27).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -63,25 +61,16 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox26
+            // Ubah
             // 
-            pictureBox26.Image = (Image)resources.GetObject("pictureBox26.Image");
-            pictureBox26.Location = new Point(907, 569);
-            pictureBox26.Name = "pictureBox26";
-            pictureBox26.Size = new Size(207, 67);
-            pictureBox26.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox26.TabIndex = 76;
-            pictureBox26.TabStop = false;
-            // 
-            // pictureBox14
-            // 
-            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(309, 366);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(640, 46);
-            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox14.TabIndex = 75;
-            pictureBox14.TabStop = false;
+            Ubah.Image = (Image)resources.GetObject("Ubah.Image");
+            Ubah.Location = new Point(907, 569);
+            Ubah.Name = "Ubah";
+            Ubah.Size = new Size(207, 67);
+            Ubah.SizeMode = PictureBoxSizeMode.Zoom;
+            Ubah.TabIndex = 76;
+            Ubah.TabStop = false;
+            Ubah.Click += Ubah_Click;
             // 
             // pictureBox13
             // 
@@ -92,16 +81,6 @@
             pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox13.TabIndex = 74;
             pictureBox13.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(309, 250);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(640, 46);
-            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox11.TabIndex = 73;
-            pictureBox11.TabStop = false;
             // 
             // pictureBox10
             // 
@@ -222,15 +201,35 @@
             pictureBox1.TabIndex = 62;
             pictureBox1.TabStop = false;
             // 
+            // TBNama
+            // 
+            TBNama.BorderStyle = BorderStyle.None;
+            TBNama.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBNama.Location = new Point(309, 250);
+            TBNama.Margin = new Padding(3, 4, 3, 4);
+            TBNama.Name = "TBNama";
+            TBNama.Size = new Size(588, 35);
+            TBNama.TabIndex = 77;
+            // 
+            // TBNomor
+            // 
+            TBNomor.BorderStyle = BorderStyle.None;
+            TBNomor.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBNomor.Location = new Point(309, 376);
+            TBNomor.Margin = new Padding(3, 4, 3, 4);
+            TBNomor.Name = "TBNomor";
+            TBNomor.Size = new Size(588, 35);
+            TBNomor.TabIndex = 78;
+            // 
             // V_EditGuide
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 673);
-            Controls.Add(pictureBox26);
-            Controls.Add(pictureBox14);
+            Controls.Add(TBNomor);
+            Controls.Add(TBNama);
+            Controls.Add(Ubah);
             Controls.Add(pictureBox13);
-            Controls.Add(pictureBox11);
             Controls.Add(pictureBox10);
             Controls.Add(pictureBox27);
             Controls.Add(pictureBox12);
@@ -245,10 +244,8 @@
             Controls.Add(pictureBox1);
             Name = "V_EditGuide";
             Text = "V_EditGuide";
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Ubah).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox27).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -262,14 +259,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox26;
-        private PictureBox pictureBox14;
+        private PictureBox Ubah;
         private PictureBox pictureBox13;
-        private PictureBox pictureBox11;
         private PictureBox pictureBox10;
         private PictureBox pictureBox27;
         private PictureBox pictureBox12;
@@ -282,5 +278,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
+        private TextBox TBNama;
+        private TextBox TBNomor;
     }
 }

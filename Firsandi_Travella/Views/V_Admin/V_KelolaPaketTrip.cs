@@ -23,16 +23,14 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             InitializeComponent();
 
-            // 🔥 PENYESUAIAN: Konfigurasi agar posisi elemen bisa diatur manual
             flowLayoutPanelTrips = new FlowLayoutPanel
             {
-                Dock = DockStyle.None, // 🔥 Tidak otomatis melekat ke sisi tertentu
+                Dock = DockStyle.None,
                 AutoScroll = true,
-                FlowDirection = FlowDirection.TopDown, // 🔥 Elemen tersusun horizontal (bisa diubah)
-                WrapContents = false, // 🔥 Mencegah elemen berpindah ke bawah secara otomatis
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Location = new Point(400, 180) // 🔥 Posisi lebih ke kanan
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                Size = new Size(800, 500),
+                Location = new Point(400, 180) // 🔥 Posisi lebi
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
@@ -63,9 +61,9 @@ namespace Firsandi_Travella.Views.V_Admin
                     Size = new Size(600, 100),
                     BackColor = Color.FromArgb(173, 205, 255),
                     Padding = new Padding(10),
-                    Margin = new Padding(15), // 🔥 Jarak antar elemen lebih leluasa
+                    Margin = new Padding(15),
                     BorderStyle = BorderStyle.FixedSingle,
-              
+
                 };
 
                 PictureBox pb = new PictureBox
@@ -99,7 +97,9 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = "Edit",
                     Location = new Point(450, 20),
+                    AutoSize = true,
                     Tag = trip
+
                 };
                 btnEdit.Click += BtnEdit_Click;
 
@@ -107,6 +107,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = "🗑",
                     Location = new Point(520, 20),
+                    AutoSize = true,
                     Tag = trip
                 };
                 btnDelete.Click += BtnDelete_Click;
@@ -120,8 +121,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 flowLayoutPanelTrips.Controls.Add(card);
             }
 
-            // 🔥 PENYESUAIAN: Pastikan panel tidak terkunci ke kanan
-            //flowLayoutPanelTrips.Left = (this.ClientSize.Width - flowLayoutPanelTrips.Width) / 2;
+        
         }
 
 

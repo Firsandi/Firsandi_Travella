@@ -17,28 +17,23 @@ namespace Firsandi_Travella.Views.V_Users
         public V_PaketTripUser()
         {
             InitializeComponent();
-            _presenter = new PaketTripPresenter(this);
-            SetupForm();
-            _presenter.LoadPaketTrips();
-        }
-        private void SetupForm()
-        {
-            this.Text = "Pilih Paket Trip";
-            this.Size = new Size(1000, 700); // Ukuran form menyesuaikan admin
-
             flowLayoutPanelTrips = new FlowLayoutPanel
             {
                 Dock = DockStyle.None,
                 AutoScroll = true,
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Location = new Point(400, 180) // 🔥 Posisi lebih ke kanan
+                Size = new Size(800, 500),
+                Location = new Point(350, 180)
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
+
+            _presenter = new PaketTripPresenter(this);
+            _presenter.LoadPaketTrips();
         }
+        
+       
 
         public void ShowPaketTrips(List<PaketTripModels> paketTrips)
         {
@@ -49,12 +44,13 @@ namespace Firsandi_Travella.Views.V_Users
             {
                 Panel card = new Panel
                 {
+
                     Size = new Size(700, 100),
                     BackColor = Color.FromArgb(173, 205, 255),
                     Padding = new Padding(10),
                     Margin = new Padding(15),
                     BorderStyle = BorderStyle.FixedSingle,
-                    
+
                 };
 
                 PictureBox pb = new PictureBox
@@ -113,8 +109,6 @@ namespace Firsandi_Travella.Views.V_Users
                 flowLayoutPanelTrips.Controls.Add(card);
             }
 
-            // Sama seperti admin: posisikan panel di tengah
-            flowLayoutPanelTrips.Location = new Point(this.ClientSize.Width - flowLayoutPanelTrips.Width - 10, flowLayoutPanelTrips.Location.Y - 70);
         }
 
         private void LihatDetailTrip(PaketTripModels paket)
