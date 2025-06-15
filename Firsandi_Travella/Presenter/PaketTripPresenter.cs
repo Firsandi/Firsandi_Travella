@@ -55,11 +55,19 @@ namespace Firsandi_Travella.Presenter
             _repository.UpdatePaketTrip(trip); // 🔥 Pastikan Presenter memanggil Repository
         }
 
+        public void TampilkanDetailPaket(int id)
+        {
+            PaketTripModels detail = _repository.AmbilPaketTripById(id);
 
-
-
-
-
+            if (detail != null && _view is IPaketTripUserView userView)
+            {
+                userView.ShowDetailPaket(detail);
+            }
+            else
+            {
+                _view.ShowError("Paket Trip tidak ditemukan.");
+            }
+        }
     }
 }
    

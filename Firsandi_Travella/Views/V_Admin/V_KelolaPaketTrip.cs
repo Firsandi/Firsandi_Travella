@@ -93,6 +93,15 @@ namespace Firsandi_Travella.Views.V_Admin
                     Location = new Point(110, 40)
                 };
 
+                //Button btnDetail = new Button
+                //{
+                //    Text = "Detail",
+                //    Location = new Point(450, 60),
+                //    AutoSize = true,
+                //    Tag = trip
+                //};
+                //btnDetail.Click += BtnDetail_Click;
+
                 Button btnEdit = new Button
                 {
                     Text = "Edit",
@@ -117,13 +126,18 @@ namespace Firsandi_Travella.Views.V_Admin
                 card.Controls.Add(lblHarga);
                 card.Controls.Add(btnEdit);
                 card.Controls.Add(btnDelete);
+                //card.Controls.Add(btnDetail);
+
 
                 flowLayoutPanelTrips.Controls.Add(card);
             }
-
-        
         }
 
+        //private void BtnDetail_Click(object sender, EventArgs e)
+        //{
+        //    var trip = (PaketTripModels)((Button)sender).Tag;
+        //    _presenter.TampilkanDetailPaket(trip.Id);
+        //}
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
@@ -134,8 +148,6 @@ namespace Firsandi_Travella.Views.V_Admin
             {
                 _presenter.LoadPaketTrips();
             }
-
-
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -149,7 +161,6 @@ namespace Firsandi_Travella.Views.V_Admin
             }
         }
 
-
         public void ShowError(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,6 +169,16 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        //public void ShowDetailPaket(PaketTripModels paket)
+        //{
+        //    string detail = $"Nama: {paket.Nama}\n" +
+        //                    $"Harga: Rp. {paket.Harga:N0}\n" +
+        //                    $"Deskripsi: {paket.Deskripsi}\n" +
+        //                    $"Guide ID: {paket.GuideId}";
+
+        //    MessageBox.Show(detail, "Detail Paket", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
 
         private void TambahPaket_Click_1(object sender, EventArgs e)
         {
@@ -185,6 +206,4 @@ namespace Firsandi_Travella.Views.V_Admin
             this.Hide();
         }
     }
-
-
 }

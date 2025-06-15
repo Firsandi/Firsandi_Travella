@@ -10,13 +10,22 @@ using System.Windows.Forms;
 
 namespace Firsandi_Travella.Views.V_Users
 {
-    public partial class V_PaketTripUser : Form, IPaketTripView
+    public partial class V_PaketTripUser : Form, IPaketTripUserView
     {
         private PaketTripPresenter _presenter;
         private FlowLayoutPanel flowLayoutPanelTrips;
         public V_PaketTripUser()
         {
             InitializeComponent();
+            Label lblJudul = new Label
+            {
+                Text = "Daftar Paket Trip",
+                Font = new Font("Segoe UI", 22, FontStyle.Bold),
+                ForeColor = Color.FromArgb(30, 30, 30),
+                AutoSize = true,
+                Location = new Point(250, 90) // Disesuaikan dengan layout kamu
+            };
+
             flowLayoutPanelTrips = new FlowLayoutPanel
             {
                 Dock = DockStyle.None,
@@ -27,14 +36,13 @@ namespace Firsandi_Travella.Views.V_Users
                 Location = new Point(350, 180)
             };
 
+            this.Controls.Add(lblJudul);
             this.Controls.Add(flowLayoutPanelTrips);
 
             _presenter = new PaketTripPresenter(this);
             _presenter.LoadPaketTrips();
         }
         
-       
-
         public void ShowPaketTrips(List<PaketTripModels> paketTrips)
         {
             flowLayoutPanelTrips.Controls.Clear();
@@ -83,39 +91,33 @@ namespace Firsandi_Travella.Views.V_Users
                 Button btnLihatDetail = new Button
                 {
                     Text = "Lihat Detail",
-                    Location = new Point(450, 20),
+                    Location = new Point(580, 35),
                     Size = new Size(100, 30),
                     Tag = trip
                 };
-                btnLihatDetail.Click += (sender, e) => LihatDetailTrip(trip);
-
-                Button btnPesan = new Button
-                {
-                    Text = "Pesan",
-                    Location = new Point(560, 20),
-                    Size = new Size(100, 30),
-                    BackColor = Color.Green,
-                    ForeColor = Color.White,
-                    Tag = trip
-                };
-                btnPesan.Click += (sender, e) => PesanTrip(trip);
+                btnLihatDetail.Click += (sender, e) => _presenter.TampilkanDetailPaket(trip.Id);
 
                 card.Controls.Add(pb);
                 card.Controls.Add(lblNama);
                 card.Controls.Add(lblHarga);
                 card.Controls.Add(btnLihatDetail);
-                card.Controls.Add(btnPesan);
 
                 flowLayoutPanelTrips.Controls.Add(card);
             }
 
         }
 
-        private void LihatDetailTrip(PaketTripModels paket)
+        public void ShowDetailPaket(PaketTripModels paket)
         {
             V_DetailTrips detailForm = new V_DetailTrips(paket);
             detailForm.ShowDialog();
         }
+
+        //private void LihatDetailTrip(PaketTripModels paket)
+        //{
+        //    V_DetailTrips detailForm = new V_DetailTrips(paket);
+        //    detailForm.ShowDialog();
+        //}
 
         private void PesanTrip(PaketTripModels paket)
         {
