@@ -101,6 +101,33 @@ namespace Firsandi_Travella.Database
             }
         }
 
-
+        public PaketTripModels AmbilPaketTripById(int id)
+        {
+            using (var conn = _dbKoneksi.Database())
+            {
+                conn.Open();
+                string sql = "SELECT id, nama, harga, deskripsi, guide_id, gambar_path FROM paket_trips WHERE id = @id";
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", id);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new PaketTripModels
+                            {
+                                Id = reader.GetInt32(0),
+                                Nama = reader.GetString(1),
+                                Harga = reader.GetDecimal(2),
+                                Deskripsi = reader.GetString(3),
+                                GuideId = reader.GetInt32(4),
+                                GambarPath = reader.GetString(5)
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
