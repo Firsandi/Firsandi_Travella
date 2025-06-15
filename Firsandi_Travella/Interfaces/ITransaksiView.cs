@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Firsandi_Travella.Interfaces
 {
-    public interface IPaketTripView
+    public interface ITransaksiView
     {
-        void ShowPaketTrips(List<PaketTripModels> paketTrips);
-        void ShowError(string message);
         void ShowSuccess(string message);
+        void ShowError(string message);
+        void TampilkanRiwayatTransaksi(List<TransaksiModels> data);
+        void TampilkanTransaksiAdmin(List<TransaksiModels> data);
     }
 }

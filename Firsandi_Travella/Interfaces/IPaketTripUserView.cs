@@ -12,4 +12,3 @@ namespace Firsandi_Travella.Interfaces
         void ShowDetailPaket(PaketTripModels paket);
     }
 }
-
