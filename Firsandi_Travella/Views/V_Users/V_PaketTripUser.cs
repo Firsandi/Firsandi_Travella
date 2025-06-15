@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace Firsandi_Travella.Views.V_Users
 {
-    public partial class V_PaketTripUser : Form, IPaketTripView
+    public partial class V_PaketTripUser : Form, IPaketTripUserView
     {
         private PaketTripPresenter _presenter;
         private FlowLayoutPanel flowLayoutPanelTrips;
         public V_PaketTripUser()
         {
             InitializeComponent();
-            _presenter = new PaketTripPresenter(this);
-            SetupForm();
-            _presenter.LoadPaketTrips();
-        }
-        private void SetupForm()
-        {
-            this.Text = "Pilih Paket Trip";
-            this.Size = new Size(1000, 700); // Ukuran form menyesuaikan admin
+            Label lblJudul = new Label
+            {
+                Text = "Daftar Paket Trip",
+                Font = new Font("Segoe UI", 22, FontStyle.Bold),
+                ForeColor = Color.FromArgb(30, 30, 30),
+                AutoSize = true,
+                Location = new Point(250, 90) 
+            };
 
             flowLayoutPanelTrips = new FlowLayoutPanel
             {
@@ -32,15 +32,17 @@ namespace Firsandi_Travella.Views.V_Users
                 AutoScroll = true,
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Size = new Size(800, 1200),
-                Location = new Point(50, 180) // Sama dengan versi admin
+                Size = new Size(800, 500),
+                Location = new Point(350, 180)
             };
 
+            this.Controls.Add(lblJudul);
             this.Controls.Add(flowLayoutPanelTrips);
-        }
 
+            _presenter = new PaketTripPresenter(this);
+            _presenter.LoadPaketTrips();
+        }
+        
         public void ShowPaketTrips(List<PaketTripModels> paketTrips)
         {
             flowLayoutPanelTrips.Controls.Clear();
@@ -50,13 +52,13 @@ namespace Firsandi_Travella.Views.V_Users
             {
                 Panel card = new Panel
                 {
+
                     Size = new Size(700, 100),
                     BackColor = Color.FromArgb(173, 205, 255),
                     Padding = new Padding(10),
                     Margin = new Padding(15),
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(50, 50),
-                    AutoSize = false,
+
                 };
 
                 PictureBox pb = new PictureBox
@@ -89,46 +91,26 @@ namespace Firsandi_Travella.Views.V_Users
                 Button btnLihatDetail = new Button
                 {
                     Text = "Lihat Detail",
-                    Location = new Point(450, 20),
+                    Location = new Point(580, 35),
                     Size = new Size(100, 30),
                     Tag = trip
                 };
-                btnLihatDetail.Click += (sender, e) => LihatDetailTrip(trip);
-
-                Button btnPesan = new Button
-                {
-                    Text = "Pesan",
-                    Location = new Point(560, 20),
-                    Size = new Size(100, 30),
-                    BackColor = Color.Green,
-                    ForeColor = Color.White,
-                    Tag = trip
-                };
-                btnPesan.Click += (sender, e) => PesanTrip(trip);
+                btnLihatDetail.Click += (sender, e) => _presenter.TampilkanDetailPaket(trip.Id);
 
                 card.Controls.Add(pb);
                 card.Controls.Add(lblNama);
                 card.Controls.Add(lblHarga);
                 card.Controls.Add(btnLihatDetail);
-                card.Controls.Add(btnPesan);
 
                 flowLayoutPanelTrips.Controls.Add(card);
             }
 
-            // Sama seperti admin: posisikan panel di tengah
-            flowLayoutPanelTrips.Location = new Point(this.ClientSize.Width - flowLayoutPanelTrips.Width - 10, flowLayoutPanelTrips.Location.Y - 70);
         }
 
-        private void LihatDetailTrip(PaketTripModels paket)
+        public void ShowDetailPaket(PaketTripModels paket)
         {
             V_DetailTrips detailForm = new V_DetailTrips(paket);
             detailForm.ShowDialog();
-        }
-
-        private void PesanTrip(PaketTripModels paket)
-        {
-            V_Pemesanan pemesananForm = new V_Pemesanan(paket);
-            pemesananForm.ShowDialog();
         }
 
         public void ShowError(string message)

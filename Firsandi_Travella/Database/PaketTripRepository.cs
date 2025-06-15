@@ -24,7 +24,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string sql = "SELECT id, nama, harga, deskripsi, gambar_path FROM paket_trips";
+                string sql = "SELECT paket_id, nama, harga, deskripsi, gambar_path FROM paket_trips";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 using (var reader = cmd.ExecuteReader())
@@ -51,7 +51,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string sql = "INSERT INTO paket_trips (nama, harga, deskripsi, gambar_path) VALUES (@nama, @harga, @deskripsi, @gambar_path)";
+                string sql = "INSERT INTO paket_trips (nama, harga,guide_id, deskripsi, gambar_path) VALUES (@nama, @harga,@guideId, @deskripsi, @gambar_path)";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {
@@ -85,7 +85,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database()) // 🔥 Gunakan koneksi dari `KoneksiDatabase`
             {
                 conn.Open();
-                string query = "UPDATE paket_trips SET nama = @nama, harga = @harga, guide_id = @guide, deskripsi = @deskripsi, gambar_path = @gambar WHERE id = @id";
+                string query = "UPDATE paket_trips SET nama = @nama, harga = @harga, guide_id = @guide, deskripsi = @deskripsi, gambar_path = @gambar WHERE id = @paket_id";
 
                 using (var cmd = new NpgsqlCommand(query, conn)) // 🔥 Gunakan `conn`, bukan `_dbKoneksi`
                 {
@@ -94,13 +94,40 @@ namespace Firsandi_Travella.Database
                     cmd.Parameters.AddWithValue("@guide", trip.GuideId);
                     cmd.Parameters.AddWithValue("@deskripsi", trip.Deskripsi);
                     cmd.Parameters.AddWithValue("@gambar", trip.GambarPath);
-                    cmd.Parameters.AddWithValue("@id", trip.Id);
+                    cmd.Parameters.AddWithValue("@paket_id", trip.Id);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-
+        public PaketTripModels AmbilPaketTripById(int id)
+        {
+            using (var conn = _dbKoneksi.Database())
+            {
+                conn.Open();
+                string sql = "SELECT paket_id, nama, harga, deskripsi, guide_id, gambar_path FROM paket_trips WHERE paket_id = @paket_id";
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("paket_id", id);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new PaketTripModels
+                            {
+                                Id = reader.GetInt32(0),
+                                Nama = reader.GetString(1),
+                                Harga = reader.GetDecimal(2),
+                                Deskripsi = reader.GetString(3),
+                                GuideId = reader.GetInt32(4),
+                                GambarPath = reader.GetString(5)
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

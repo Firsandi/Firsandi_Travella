@@ -1,6 +1,7 @@
 using Firsandi_Travella.Views.V_Admin;
 using Firsandi_Travella.Views.V_Users;
 using Travella_TA.Views;
+using Travella_TA.Views.V_Admin;
 
 namespace Firsandi_Travella
 {
@@ -15,7 +16,9 @@ namespace Firsandi_Travella
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new V_DashboardAdmin());
+            //Application.Run(new V_PaketTripUser());
+            Application.Run(new V_Kelola_Transaksi());
+            //Application.Run(new V_PaketTripUser());
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string sql = "SELECT id_admin FROM users WHERE username = @username AND password = @password";
+                string sql = "SELECT user_id FROM users WHERE username = @username AND password = @password";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {
@@ -42,7 +42,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string sql = "INSERT INTO users (nama, email, nomor_telepon, username, password) VALUES (@nama, @email, @nomor, @username, @password)";
+                string sql = "INSERT INTO users (nama, email, no_telepon, username, password) VALUES (@nama, @email, @nomor, @username, @password)";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {

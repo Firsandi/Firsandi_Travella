@@ -48,7 +48,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(-1, 0);
+            pictureBox2.Location = new Point(-5, -1);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(1270, 98);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -58,7 +58,7 @@
             // PaketTrip
             // 
             PaketTrip.Image = (Image)resources.GetObject("PaketTrip.Image");
-            PaketTrip.Location = new Point(12, 173);
+            PaketTrip.Location = new Point(8, 172);
             PaketTrip.Name = "PaketTrip";
             PaketTrip.Size = new Size(211, 46);
             PaketTrip.SizeMode = PictureBoxSizeMode.Zoom;
@@ -68,7 +68,7 @@
             // pictureBox7
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(12, 314);
+            pictureBox7.Location = new Point(8, 313);
             pictureBox7.Margin = new Padding(3, 4, 3, 4);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(211, 46);
@@ -79,7 +79,7 @@
             // pictureBox6
             // 
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(12, 243);
+            pictureBox6.Location = new Point(8, 242);
             pictureBox6.Margin = new Padding(3, 4, 3, 4);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(211, 46);
@@ -90,7 +90,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1, 0);
+            pictureBox1.Location = new Point(-5, -1);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(248, 679);
             pictureBox1.TabIndex = 50;
@@ -99,7 +99,7 @@
             // Beranda
             // 
             Beranda.Image = (Image)resources.GetObject("Beranda.Image");
-            Beranda.Location = new Point(12, 104);
+            Beranda.Location = new Point(8, 103);
             Beranda.Name = "Beranda";
             Beranda.Size = new Size(211, 46);
             Beranda.SizeMode = PictureBoxSizeMode.Zoom;
@@ -109,7 +109,7 @@
             // Kembali
             // 
             Kembali.Image = (Image)resources.GetObject("Kembali.Image");
-            Kembali.Location = new Point(34, 22);
+            Kembali.Location = new Point(30, 21);
             Kembali.Margin = new Padding(3, 4, 3, 4);
             Kembali.Name = "Kembali";
             Kembali.Size = new Size(167, 46);

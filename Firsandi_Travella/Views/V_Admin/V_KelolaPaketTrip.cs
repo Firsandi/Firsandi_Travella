@@ -23,17 +23,14 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             InitializeComponent();
 
-            // 🔥 PENYESUAIAN: Konfigurasi agar posisi elemen bisa diatur manual
             flowLayoutPanelTrips = new FlowLayoutPanel
             {
-                Dock = DockStyle.None, // 🔥 Tidak otomatis melekat ke sisi tertentu
+                Dock = DockStyle.None,
                 AutoScroll = true,
-                FlowDirection = FlowDirection.TopDown, // 🔥 Elemen tersusun horizontal (bisa diubah)
-                WrapContents = false, // 🔥 Mencegah elemen berpindah ke bawah secara otomatis
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Size = new Size(800, 1200), // 🔥 Ukuran yang bisa diubah sesuai keinginan
-                Location = new Point(50, 180) // 🔥 Posisi awal bisa disesuaikan manual
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                Size = new Size(800, 500),
+                Location = new Point(400, 180) 
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
@@ -55,19 +52,18 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             flowLayoutPanelTrips.Controls.Clear();
 
-            Console.WriteLine($"Total paket trip: {paketTrips.Count}"); // 🔥 Debugging jumlah paket trip
+            Console.WriteLine($"Total paket trip: {paketTrips.Count}"); 
 
             foreach (var trip in paketTrips)
             {
                 Panel card = new Panel
                 {
-                    Size = new Size(1000, 300),
+                    Size = new Size(600, 100),
                     BackColor = Color.FromArgb(173, 205, 255),
                     Padding = new Padding(10),
-                    Margin = new Padding(15), // 🔥 Jarak antar elemen lebih leluasa
+                    Margin = new Padding(15),
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(50, 50), // 🔥 Posisi bisa diubah sesuai kebutuhan
-                    AutoSize = true
+
                 };
 
                 PictureBox pb = new PictureBox
@@ -101,7 +97,9 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = "Edit",
                     Location = new Point(450, 20),
+                    AutoSize = true,
                     Tag = trip
+
                 };
                 btnEdit.Click += BtnEdit_Click;
 
@@ -109,6 +107,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 {
                     Text = "🗑",
                     Location = new Point(520, 20),
+                    AutoSize = true,
                     Tag = trip
                 };
                 btnDelete.Click += BtnDelete_Click;
@@ -119,13 +118,10 @@ namespace Firsandi_Travella.Views.V_Admin
                 card.Controls.Add(btnEdit);
                 card.Controls.Add(btnDelete);
 
+
                 flowLayoutPanelTrips.Controls.Add(card);
             }
-
-            // 🔥 PENYESUAIAN: Pastikan panel tidak terkunci ke kanan
-            flowLayoutPanelTrips.Left = (this.ClientSize.Width - flowLayoutPanelTrips.Width) / 2;
         }
-
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
@@ -136,8 +132,6 @@ namespace Firsandi_Travella.Views.V_Admin
             {
                 _presenter.LoadPaketTrips();
             }
-
-
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -146,11 +140,10 @@ namespace Firsandi_Travella.Views.V_Admin
             var confirm = MessageBox.Show($"Yakin hapus trip {trip.Nama}?", "Konfirmasi", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
-                _presenter.HapusPaketTrip(trip.Id); // Tambahkan method ini di Presenter & Repo
+                _presenter.HapusPaketTrip(trip.Id); 
                 _presenter.LoadPaketTrips();
             }
         }
-
 
         public void ShowError(string message)
         {
@@ -187,6 +180,4 @@ namespace Firsandi_Travella.Views.V_Admin
             this.Hide();
         }
     }
-
-
 }
