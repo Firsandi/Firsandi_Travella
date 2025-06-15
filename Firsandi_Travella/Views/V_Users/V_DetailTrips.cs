@@ -11,25 +11,6 @@ using Firsandi_Travella.Models;
 using System.Drawing;
 using System.IO;
 
-//namespace Firsandi_Travella.Views.V_Users
-//{
-//    public partial class V_DetailTrips : Form
-//    {
-
-//        private readonly PaketTripModels _trip;
-//        public V_DetailTrips(PaketTripModels trip)
-//        {
-//            InitializeComponent();
-//            _trip = trip;
-//            SetupForm();
-//        }
-//        public void SetupForm()
-//        {
-
-//        }
-//    }
-//}
-
 namespace Firsandi_Travella.Views.V_Users
 {
     public partial class V_DetailTrips : Form
@@ -81,8 +62,8 @@ namespace Firsandi_Travella.Views.V_Users
             Button btnPesan = new Button
             {
                 Text = "Pesan Sekarang",
-                Location = new Point(20, 270),
-                Size = new Size(150, 35),
+                Location = new Point(510, 310), 
+                Size = new Size(120, 35),
                 BackColor = Color.Green,
                 ForeColor = Color.White
             };
@@ -91,7 +72,7 @@ namespace Firsandi_Travella.Views.V_Users
             Button btnKembali = new Button
             {
                 Text = "Kembali",
-                Location = new Point(180, 270),
+                Location = new Point(20, 310), 
                 Size = new Size(100, 35)
             };
             btnKembali.Click += (sender, e) => this.Close();
@@ -110,6 +91,7 @@ namespace Firsandi_Travella.Views.V_Users
         {
             V_Pemesanan pesanForm = new V_Pemesanan(_paket);
             pesanForm.ShowDialog();
+            this.Hide(); 
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Firsandi_Travella.Views.V_Users
                 Font = new Font("Segoe UI", 22, FontStyle.Bold),
                 ForeColor = Color.FromArgb(30, 30, 30),
                 AutoSize = true,
-                Location = new Point(250, 90) // Disesuaikan dengan layout kamu
+                Location = new Point(250, 90) 
             };
 
             flowLayoutPanelTrips = new FlowLayoutPanel
@@ -111,18 +111,6 @@ namespace Firsandi_Travella.Views.V_Users
         {
             V_DetailTrips detailForm = new V_DetailTrips(paket);
             detailForm.ShowDialog();
-        }
-
-        //private void LihatDetailTrip(PaketTripModels paket)
-        //{
-        //    V_DetailTrips detailForm = new V_DetailTrips(paket);
-        //    detailForm.ShowDialog();
-        //}
-
-        private void PesanTrip(PaketTripModels paket)
-        {
-            V_Pemesanan pemesananForm = new V_Pemesanan(paket);
-            pemesananForm.ShowDialog();
         }
 
         public void ShowError(string message)

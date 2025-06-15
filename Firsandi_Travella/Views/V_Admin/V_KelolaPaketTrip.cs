@@ -30,7 +30,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
                 Size = new Size(800, 500),
-                Location = new Point(400, 180) // 🔥 Posisi lebi
+                Location = new Point(400, 180) 
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
@@ -52,7 +52,7 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             flowLayoutPanelTrips.Controls.Clear();
 
-            Console.WriteLine($"Total paket trip: {paketTrips.Count}"); // 🔥 Debugging jumlah paket trip
+            Console.WriteLine($"Total paket trip: {paketTrips.Count}"); 
 
             foreach (var trip in paketTrips)
             {
@@ -93,15 +93,6 @@ namespace Firsandi_Travella.Views.V_Admin
                     Location = new Point(110, 40)
                 };
 
-                //Button btnDetail = new Button
-                //{
-                //    Text = "Detail",
-                //    Location = new Point(450, 60),
-                //    AutoSize = true,
-                //    Tag = trip
-                //};
-                //btnDetail.Click += BtnDetail_Click;
-
                 Button btnEdit = new Button
                 {
                     Text = "Edit",
@@ -126,18 +117,11 @@ namespace Firsandi_Travella.Views.V_Admin
                 card.Controls.Add(lblHarga);
                 card.Controls.Add(btnEdit);
                 card.Controls.Add(btnDelete);
-                //card.Controls.Add(btnDetail);
 
 
                 flowLayoutPanelTrips.Controls.Add(card);
             }
         }
-
-        //private void BtnDetail_Click(object sender, EventArgs e)
-        //{
-        //    var trip = (PaketTripModels)((Button)sender).Tag;
-        //    _presenter.TampilkanDetailPaket(trip.Id);
-        //}
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
@@ -156,7 +140,7 @@ namespace Firsandi_Travella.Views.V_Admin
             var confirm = MessageBox.Show($"Yakin hapus trip {trip.Nama}?", "Konfirmasi", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
-                _presenter.HapusPaketTrip(trip.Id); // Tambahkan method ini di Presenter & Repo
+                _presenter.HapusPaketTrip(trip.Id); 
                 _presenter.LoadPaketTrips();
             }
         }
@@ -169,16 +153,6 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        //public void ShowDetailPaket(PaketTripModels paket)
-        //{
-        //    string detail = $"Nama: {paket.Nama}\n" +
-        //                    $"Harga: Rp. {paket.Harga:N0}\n" +
-        //                    $"Deskripsi: {paket.Deskripsi}\n" +
-        //                    $"Guide ID: {paket.GuideId}";
-
-        //    MessageBox.Show(detail, "Detail Paket", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
 
         private void TambahPaket_Click_1(object sender, EventArgs e)
         {
