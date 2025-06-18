@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Travella_TA.Views;
 
 namespace Firsandi_Travella.Views.V_Users
 {
@@ -14,6 +15,7 @@ namespace Firsandi_Travella.Views.V_Users
     {
         private PaketTripPresenter _presenter;
         private FlowLayoutPanel flowLayoutPanelTrips;
+        private int userId;
 
         public V_PaketTripUser()
         {
@@ -108,7 +110,7 @@ namespace Firsandi_Travella.Views.V_Users
 
         public void ShowDetailPaket(PaketTripModels paket)
         {
-            V_DetailPaketTrips detailForm = new V_DetailPaketTrips(paket);
+            V_DetailPaketTrips detailForm = new V_DetailPaketTrips(userId, paket);
             detailForm.ShowDialog();
             this.Hide();
         }
@@ -121,6 +123,27 @@ namespace Firsandi_Travella.Views.V_Users
         public void ShowSuccess(string message)
         {
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Beranda_Click(object sender, EventArgs e)
+        {
+            V_DashboardUser dashboardUser = new V_DashboardUser();
+            dashboardUser.ShowDialog();
+            this.Hide();
+        }
+
+        private void PaketTrip_Click(object sender, EventArgs e)
+        {
+            V_PaketTripUser v_PaketTripUser = new V_PaketTripUser();
+            v_PaketTripUser.Show();
+            this.Hide();
+        }
+
+        private void btnRiwayatPemesanan_Click(object sender, EventArgs e)
+        {
+            V_RiwayatUser v_RiwayatUser = new V_RiwayatUser();
+            v_RiwayatUser.Show();
+            this.Hide();
         }
     }
 }

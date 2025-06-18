@@ -1,5 +1,8 @@
 ﻿using Firsandi_Travella.Database;
+using Firsandi_Travella.Helper;
+using Firsandi_Travella.Interfaces;
 using Firsandi_Travella.Models;
+using Firsandi_Travella.Presenter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,158 +15,137 @@ using System.Windows.Forms;
 
 namespace Firsandi_Travella.Views.V_Users
 {
-    public partial class V_PemesananTrips : Form
+    public partial class V_PemesananTrips : Form, IPemesananView
     {
-        private PaketTripModels _paket;
-        private DateTimePicker DTPKeberangkatan;
-        private ComboBox CBJadwal, CBMetodePembayaran;
-        private Button BtnPesan;
+        private readonly PemesananPresenter _presenter;
+        private readonly PaketTripModels _paket;
+        private readonly int _userId;
 
-        public V_PemesananTrips(int paketId)
+        private ComboBox CBJadwal, CBMetode;
+        private DateTimePicker DTP;
+
+        public V_PemesananTrips(int userId, PaketTripModels paket)
         {
             InitializeComponent();
-
-            // 🔥 Ambil data paket berdasarkan ID dari repository
-            PaketTripRepository repo = new PaketTripRepository();
-            _paket = repo.AmbilPaketTripById(paketId);
-
-            if (_paket == null)
+            this.Size = new Size(1280, 720);
+            if (!SessionManager.IsLoggedIn)
             {
-                MessageBox.Show("Paket tidak ditemukan!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sesi pengguna tidak valid. Silakan login ulang.");
                 this.Close();
                 return;
             }
 
-            this.Text = "🛫 Pemesanan Trip";
-            this.Size = new Size(950, 580);
+            _userId = SessionManager.UserId;
+            _paket = paket;
+            _presenter = new PemesananPresenter(this);
+
+            this.Text = $"🗓 Pemesanan: {_paket.Nama}";
+            this.Size = new Size(850, 500);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            FlowLayoutPanel flowPanel = new FlowLayoutPanel
+            FlowLayoutPanel panel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                AutoScroll = true,
                 FlowDirection = FlowDirection.TopDown,
-                WrapContents = false,
-                Padding = new Padding(10)
+                AutoScroll = true,
+                Padding = new Padding(20)
             };
-            this.Controls.Add(flowPanel);
+            Controls.Add(panel);
 
-            Panel card = new Panel
-            {
-                Size = new Size(860, 400),
-                BackColor = Color.WhiteSmoke,
-                BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10),
-                Padding = new Padding(10)
-            };
-
-            PictureBox pbGambar = new PictureBox
+            PictureBox pb = new PictureBox
             {
                 Size = new Size(300, 200),
-                Location = new Point(10, 50),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
-            string imagePath = Path.Combine(Application.StartupPath, "Images", _paket.GambarPath);
-            if (File.Exists(imagePath))
-                pbGambar.Image = Image.FromFile(imagePath);
+            string imgPath = Path.Combine(Application.StartupPath, "Images", _paket.GambarPath);
+            if (File.Exists(imgPath)) pb.Image = Image.FromFile(imgPath);
 
-            Label lblJudul = new Label
+            DTP = new DateTimePicker
             {
-                Text = $"🌍 {_paket.Nama}",
-                Font = new Font("Segoe UI", 18, FontStyle.Bold),
-                Location = new Point(10, 10),
-                AutoSize = true
-            };
-
-            Label lblHarga = new Label
-            {
-                Text = $"💰 Harga: Rp {_paket.Harga:N0}",
-                Font = new Font("Segoe UI", 14),
-                Location = new Point(320, 50),
-                AutoSize = true
-            };
-
-            Label lblTanggal = new Label
-            {
-                Text = "📅 Pilih Tanggal Keberangkatan:",
-                Location = new Point(320, 100),
-                AutoSize = true
-            };
-
-            DTPKeberangkatan = new DateTimePicker
-            {
-                Format = DateTimePickerFormat.Short,
                 MinDate = DateTime.Today,
-                Location = new Point(545, 95)
+                Format = DateTimePickerFormat.Short
             };
 
-            Label lblJadwal = new Label
-            {
-                Text = "⏰ Pilih Jadwal Keberangkatan:",
-                Location = new Point(320, 150),
-                AutoSize = true
-            };
-
-            CBJadwal = new ComboBox
-            {
-                Location = new Point(535, 145),
-                DropDownStyle = ComboBoxStyle.DropDownList
-            };
+            CBJadwal = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
             CBJadwal.Items.AddRange(new string[] { "Siang", "Malam" });
 
-            Label lblMetode = new Label
-            {
-                Text = "💳 Pilih Metode Pembayaran:",
-                Location = new Point(320, 200),
-                AutoSize = true
-            };
+            CBMetode = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+            CBMetode.Items.AddRange(new string[] { "Bank Transfer", "QRIS" });
 
-            CBMetodePembayaran = new ComboBox
+            Button btnPesan = new Button
             {
-                Location = new Point(527, 195),
-                DropDownStyle = ComboBoxStyle.DropDownList
-            };
-            CBMetodePembayaran.Items.AddRange(new string[] { "Transfer Bank", "QRIS" });
-
-            BtnPesan = new Button
-            {
-                Text = "✅ Konfirmasi Pemesanan",
-                Location = new Point(320, 300),
-                Size = new Size(200, 40),
+                Text = "Konfirmasi Pemesanan",
+                AutoSize = true,
                 BackColor = Color.ForestGreen,
                 ForeColor = Color.White
             };
+            btnPesan.Click += BtnPesan_Click;
 
-            BtnPesan.Click += (sender, e) =>
+            panel.Controls.AddRange(new Control[]
             {
-                if (CBJadwal.SelectedIndex == -1 || CBMetodePembayaran.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Harap pilih jadwal keberangkatan dan metode pembayaran!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                new Label { Text = $"🌍 {_paket.Nama}", Font = new Font("Segoe UI", 16, FontStyle.Bold), AutoSize = true },
+                pb,
+                new Label { Text = "📅 Tanggal Keberangkatan:", AutoSize = true },
+                DTP,
+                new Label { Text = "⏰ Jadwal Keberangkatan:", AutoSize = true },
+                CBJadwal,
+                new Label { Text = "💳 Metode Pembayaran:", AutoSize = true },
+                CBMetode,
+                btnPesan
+            });
+        }
 
-                DateTime tanggalBooking = DTPKeberangkatan.Value;
-                string jadwalKeberangkatan = CBJadwal.SelectedItem.ToString();
-                string metodePembayaran = CBMetodePembayaran.SelectedItem.ToString();
+        private void BtnPesan_Click(object sender, EventArgs e)
+        {
+            if (CBJadwal.SelectedIndex == -1 || CBMetode.SelectedIndex == -1)
+            {
+                TampilkanPesan("Harap pilih jadwal dan metode pembayaran!");
+                return;
+            }
 
-                MessageBox.Show($"✅ Pemesanan Berhasil!\nTanggal: {tanggalBooking.ToShortDateString()}\nJadwal: {jadwalKeberangkatan}\nMetode: {metodePembayaran}",
-                                "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close();
+            PemesananModels model = new PemesananModels
+            {
+                UserId = _userId,
+                PaketId = _paket.Id,
+                GuideId = _paket.GuideId,
+                TanggalKeberangkatan = DTP.Value,
+                JadwalKeberangkatan = CBJadwal.SelectedItem.ToString(),
+                MetodePembayaran = CBMetode.SelectedItem.ToString()
             };
 
-            card.Controls.Add(pbGambar);
-            card.Controls.Add(lblJudul);
-            card.Controls.Add(lblHarga);
-            card.Controls.Add(lblTanggal);
-            card.Controls.Add(DTPKeberangkatan);
-            card.Controls.Add(lblJadwal);
-            card.Controls.Add(CBJadwal);
-            card.Controls.Add(lblMetode);
-            card.Controls.Add(CBMetodePembayaran);
-            card.Controls.Add(BtnPesan);
+            _presenter.SimpanPemesanan(model);
+            if (model.MetodePembayaran == "Bank Transfer")
+            {
+                V_TFBANK tfBank = new V_TFBANK(_paket.Harga);
+                tfBank.ShowDialog();
+            }
+            else if (model.MetodePembayaran == "QRIS")
+            {
+                V_QRIS qris = new V_QRIS(_paket.Harga);
+                qris.ShowDialog();
+            }
+        }
 
-            flowPanel.Controls.Add(card);
+        public void TampilkanPesan(string pesan)
+        {
+            MessageBox.Show(pesan, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void TutupForm()
+        {
+            this.Close();
+        }
+        public void PerbaruiRiwayat(List<PemesananModels> pemesanans)
+        {
+            // Untuk saat ini bisa kosong, atau tampilkan di konsol/log
+            Console.WriteLine($"📦 Total data pemesanan: {pemesanans.Count}");
+        }
+
+        private void Kembali_Click(object sender, EventArgs e)
+        {
+            V_DetailPaketTrips detailForm = new V_DetailPaketTrips(_userId, _paket);
+            detailForm.Show();
+            this.Hide();
         }
     }
 }

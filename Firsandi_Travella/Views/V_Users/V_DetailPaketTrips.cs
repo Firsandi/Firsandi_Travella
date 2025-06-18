@@ -1,4 +1,6 @@
-﻿using Firsandi_Travella.Models;
+﻿using Firsandi_Travella.Database;
+using Firsandi_Travella.Helper;
+using Firsandi_Travella.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +17,22 @@ namespace Firsandi_Travella.Views.V_Users
     {
         private PaketTripModels _paket;
         private FlowLayoutPanel flowPanel;
+        private int _userId;
 
-        public V_DetailPaketTrips(PaketTripModels paket)
+
+        public V_DetailPaketTrips(int userId,PaketTripModels paket)
         {
             InitializeComponent();
+            this.Size = new Size(1280, 720);
 
+            if (!SessionManager.IsLoggedIn)
+            {
+                MessageBox.Show("Sesi pengguna tidak valid. Harap login ulang.");
+                this.Close();
+                return;
+            }
+
+            _userId = SessionManager.UserId;
             _paket = paket;
             this.Text = "📜 Detail Paket Trip";
             this.Size = new Size(950, 580);
@@ -44,7 +57,7 @@ namespace Firsandi_Travella.Views.V_Users
 
             Panel card = new Panel
             {
-                Size = new Size(860, 400),
+                Size = new Size(860, 1000),
                 BackColor = Color.WhiteSmoke,
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(10),
@@ -61,6 +74,8 @@ namespace Firsandi_Travella.Views.V_Users
             string imagePath = Path.Combine(Application.StartupPath, "Images", _paket.GambarPath);
             if (File.Exists(imagePath))
                 pbGambar.Image = Image.FromFile(imagePath);
+
+          
 
             Label lblNama = new Label
             {
@@ -96,7 +111,7 @@ namespace Firsandi_Travella.Views.V_Users
                 BackColor = Color.ForestGreen,
                 ForeColor = Color.White
             };
-            btnPesanSekarang.Click += (sender, e) => BukaFormPemesanan(_paket.Id);
+            btnPesanSekarang.Click += (sender, e) => BukaFormPemesanan();
 
             card.Controls.Add(pbGambar);
             card.Controls.Add(lblNama);
@@ -107,11 +122,18 @@ namespace Firsandi_Travella.Views.V_Users
             flowPanel.Controls.Add(card);
         }
 
-        private void BukaFormPemesanan(int paketId)
+        private void BukaFormPemesanan()
         {
-            V_PemesananTrips pemesananForm = new V_PemesananTrips(paketId);
+            if (_userId <= 0)
+            {
+                MessageBox.Show("User tidak dikenali. Harap login ulang.");
+                return;
+            }
+
+            var pemesananForm = new V_PemesananTrips(_userId, _paket);
             pemesananForm.ShowDialog();
             this.Hide();
         }
+
     }
 }

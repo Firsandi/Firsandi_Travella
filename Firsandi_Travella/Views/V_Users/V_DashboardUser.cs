@@ -77,7 +77,28 @@ namespace Travella_TA.Views
         {
             V_PaketTripUser v_PaketTripUser = new V_PaketTripUser();
             v_PaketTripUser.Show();
-            this.Hide(); 
+            this.Hide();
+        }
+
+        private void btnRiwayatPemesanan_Click(object sender, EventArgs e)
+        {
+            V_RiwayatUser v_RiwayatUser = new V_RiwayatUser();
+            v_RiwayatUser.Show();
+            this.Hide();
+        }
+
+        private void btnPaketTrip_Click(object sender, EventArgs e)
+        {
+            V_PaketTripUser v_PaketTripUser = new V_PaketTripUser();
+            v_PaketTripUser.Show();
+            this.Hide();
+        }
+
+        private void btnBeranda_Click(object sender, EventArgs e)
+        {
+            V_DashboardUser v_DashboardUser = new V_DashboardUser();
+            v_DashboardUser.Show();
+            this.Hide();
         }
     }
 }

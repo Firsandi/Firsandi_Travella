@@ -13,7 +13,7 @@ namespace Firsandi_Travella.Database
 
         public KoneksiDatabase()
         {
-            _connectionString = "Host=localhost;Username=postgres;Password=123;Database=TRAVELLA_PBO;";
+            _connectionString = "Host=localhost;Username=postgres;Password=123;Database=PBO;";
         }
 
         public NpgsqlConnection Database()

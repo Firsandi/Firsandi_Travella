@@ -1,4 +1,5 @@
-﻿using Firsandi_Travella.Models;
+﻿using Firsandi_Travella.Helper;
+using Firsandi_Travella.Models;
 using Firsandi_Travella.Presenter;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Travella_TA.Views;
 
 namespace Firsandi_Travella.Views.V_Admin
 {
@@ -55,8 +57,8 @@ namespace Firsandi_Travella.Views.V_Admin
                 MasukkanGambar.Image = Image.FromFile(imagePath);
         }
 
-  
-      
+
+
 
         private void MasukkanGambar_Click(object sender, EventArgs e)
         {
@@ -109,6 +111,49 @@ namespace Firsandi_Travella.Views.V_Admin
             {
                 MessageBox.Show($"Terjadi error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Yakin ingin logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                SessionManager.ClearSession();
+
+                // Kembali ke halaman login
+                new V_LoginAdmin().Show();
+                this.Close(); // atau this.Hide();
+            }
+        }
+
+        private void Beranda_Click(object sender, EventArgs e)
+        {
+            V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
+            v_DashboardAdmin.Show();
+            this.Hide();
+        }
+
+        private void PaketTrip_Click(object sender, EventArgs e)
+        {
+            V_KelolaPaketTrip kelolaPaketTrip = new V_KelolaPaketTrip();
+            kelolaPaketTrip.Show();
+            this.Hide();
+        }
+
+        private void Guide_Click(object sender, EventArgs e)
+        {
+            V_KelolaGuide v_KelolaGuide = new V_KelolaGuide();
+            v_KelolaGuide.Show();
+            this.Hide();
+        }
+
+        private void Transaksi_Click(object sender, EventArgs e)
+        {
+            V_KelolaPemesanan v_KelolaPemesanan = new V_KelolaPemesanan();
+            v_KelolaPemesanan.Show();
+            this.Hide();
         }
     }
 }

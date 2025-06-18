@@ -8,135 +8,162 @@ namespace Firsandi_Travella.Database
 {
     public class PemesananRepository
     {
-        private readonly KoneksiDatabase _dbKoneksi = new();
 
-        public bool SimpanPemesananLangsung(PemesananModels model)
+            private readonly KoneksiDatabase _dbKoneksi;
+
+            public PemesananRepository()
+            {
+                _dbKoneksi = new KoneksiDatabase();
+            }
+
+            public int SimpanPemesanan(PemesananModels model)
+            {
+                using var conn = _dbKoneksi.Database();
+                conn.Open();
+
+                string sql = @"
+                INSERT INTO pemesanans (user_id, guide_id, paket_id, tanggal_keberangkatan, jadwal_keberangkatan, metode_pembayaran, status_pembayaran) 
+                VALUES (@user_id, @guide_id, @paket_id, @tanggal_keberangkatan, @jadwal_keberangkatan, @metode_pembayaran, @status_pembayaran)
+                RETURNING pemesanan_id";
+
+                using var cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("user_id", model.UserId);
+                cmd.Parameters.AddWithValue("guide_id", model.GuideId ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("paket_id", model.PaketId);
+                cmd.Parameters.AddWithValue("tanggal_keberangkatan", model.TanggalKeberangkatan);
+                cmd.Parameters.AddWithValue("jadwal_keberangkatan", model.JadwalKeberangkatan);
+                cmd.Parameters.AddWithValue("metode_pembayaran", model.MetodePembayaran);
+                cmd.Parameters.AddWithValue("status_pembayaran", model.StatusPembayaran);
+
+                return Convert.ToInt32(cmd.ExecuteScalar()); // ✅ Mengambil ID pemesanan yang baru dibuat
+            }
+
+            public List<PemesananModels> GetRiwayatUser(int userId)
+            {
+                List<PemesananModels> riwayat = new List<PemesananModels>();
+
+                using var conn = _dbKoneksi.Database();
+                conn.Open();
+
+                string sql = "SELECT * FROM pemesanans WHERE user_id = @user_id ORDER BY pemesanan_id DESC";
+                using var cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("user_id", userId);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    riwayat.Add(new PemesananModels
+                    {
+                        PemesananId = reader.GetInt32(0),
+                        UserId = reader.GetInt32(1),
+                        GuideId = reader.IsDBNull(2) ? null : reader.GetInt32(2),
+                        PaketId = reader.GetInt32(3),
+                        TanggalKeberangkatan = reader.GetDateTime(4),
+                        JadwalKeberangkatan = reader.GetString(5),
+                        MetodePembayaran = reader.GetString(6),
+                        StatusPembayaran = reader.GetString(7)
+                    });
+                }
+                return riwayat;
+            }
+        public List<PemesananModels> GetPemesananByUser(int userId)
         {
+            var list = new List<PemesananModels>();
             using var conn = _dbKoneksi.Database();
             conn.Open();
-            using var trx = conn.BeginTransaction();
 
-            try
-            {
-                decimal jumlah = GetHargaPaket(model.PaketId);
+            string sql = @"
+        SELECT 
+            p.pemesanan_id, p.paket_id, pk.nama AS nama_paket,
+            p.tanggal_keberangkatan, p.jadwal_keberangkatan,
+            p.metode_pembayaran, p.status_pembayaran,
+            COALESCE(p.nominal_transfer, pk.harga) AS nominal_transfer
+        FROM pemesanans p
+        JOIN paket_trips pk ON pk.paket_id = p.paket_id
+        WHERE p.user_id = @userId";
 
-                string sqlPemesanan = @"INSERT INTO pemesanans 
-            (user_id, paket_id, guide_id, metode_id, tanggal_keberangkatan, tanggal_pemesanan, status_pemesanan)
-            VALUES (@user_id, @paket_id, @guide_id, @metode_id, @tanggal, @tanggal_pemesanan, 'Berhasil')
-            RETURNING pemesanan_id";
-
-                using var cmdP = new NpgsqlCommand(sqlPemesanan, conn);
-                cmdP.Parameters.AddWithValue("user_id", model.UserId);
-                cmdP.Parameters.AddWithValue("paket_id", model.PaketId);
-                cmdP.Parameters.AddWithValue("guide_id", model.GuideId);
-                cmdP.Parameters.AddWithValue("metode_id", model.MetodeId);
-                cmdP.Parameters.AddWithValue("tanggal", model.TanggalKeberangkatan);
-                cmdP.Parameters.AddWithValue("tanggal_pemesanan", DateTime.Now);
-
-                int pemesananId = Convert.ToInt32(cmdP.ExecuteScalar());
-
-                string sqlTransaksi = @"INSERT INTO transaksi_pembayarans 
-            (pemesanan_id, metode_id, jumlah, status, tanggal_pembayaran)
-            VALUES (@pemesanan_id, @metode_id, @jumlah, 'Berhasil', NOW())";
-
-                using var cmdT = new NpgsqlCommand(sqlTransaksi, conn);
-                cmdT.Parameters.AddWithValue("pemesanan_id", pemesananId);
-                cmdT.Parameters.AddWithValue("metode_id", model.MetodeId);
-                cmdT.Parameters.AddWithValue("jumlah", jumlah);
-                cmdT.ExecuteNonQuery();
-
-                trx.Commit();
-                return true;
-            }
-            catch
-            {
-                trx.Rollback();
-                return false;
-            }
-        }
-
-        public List<MetodePembayaranModels> GetMetode()
-        {
-            List<MetodePembayaranModels> list = new();
-            using var conn = _dbKoneksi.Database();
-            conn.Open();
-            string sql = "SELECT metode_pembayaran_id, nama_metode, jenis FROM metode_pembayarans";
             using var cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("userId", userId);
+
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                list.Add(new MetodePembayaranModels
+                list.Add(new PemesananModels
                 {
-                    Id = reader.GetInt32(0),
-                    Nama = reader.GetString(1),
-                    Jenis = reader.GetString(2)
+                    PemesananId = reader.GetInt32(0),
+                    PaketId = reader.GetInt32(1),
+                    Nama = reader.GetString(2),
+                    TanggalKeberangkatan = reader.GetDateTime(3),
+                    JadwalKeberangkatan = reader.GetString(4),
+                    MetodePembayaran = reader.GetString(5),
+                    StatusPembayaran = reader.GetString(6),
+                    NominalPembayaran = reader.GetDecimal(7)
                 });
             }
+
             return list;
         }
-
-        public List<BankTransferModels> GetBankByMetode(int metodeId)
+        public List<PemesananModels> GetSemuaPemesanan()
         {
-            List<BankTransferModels> list = new();
+            var list = new List<PemesananModels>();
             using var conn = _dbKoneksi.Database();
             conn.Open();
-            string sql = "SELECT nama_bank, nomor_rekening FROM bank_transfer WHERE metode_id = @id";
+
+            string sql = @"
+        SELECT 
+            p.pemesanan_id, 
+            u.nama AS username, 
+            pk.nama AS nama_paket,
+            p.tanggal_keberangkatan,
+            p.status_pembayaran
+        FROM pemesanans p
+        JOIN users u ON u.user_id = p.user_id
+        JOIN paket_trips pk ON pk.paket_id = p.paket_id";
+
             using var cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("id", metodeId);
             using var reader = cmd.ExecuteReader();
+
             while (reader.Read())
             {
-                list.Add(new BankTransferModels
+                list.Add(new PemesananModels
                 {
-                    NamaBank = reader.GetString(0),
-                    NomorRekening = reader.GetString(1)
+                    PemesananId = reader.GetInt32(0),
+                    Username = reader.GetString(1),
+                    Nama = reader.GetString(2),
+                    TanggalKeberangkatan = reader.GetDateTime(3),
+                    StatusPembayaran = reader.GetString(4)
                 });
             }
+
             return list;
         }
 
-        public BankTransferModels GetRekening(int metodeId)
-        {
-            using var conn = _dbKoneksi.Database();
-            conn.Open();
-            string sql = "SELECT nama_bank, nomor_rekening FROM bank_transfer WHERE metode_id = @id";
-            using var cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("id", metodeId);
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                return new BankTransferModels
-                {
-                    NamaBank = reader.GetString(0),
-                    NomorRekening = reader.GetString(1)
-                };
-            }
-            return null;
-        }
-
-        public bool UpdateStatusPemesanan(int id, string status)
-        {
-            using var conn = _dbKoneksi.Database();
-            conn.Open();
-            string sql = @"UPDATE pemesanans 
-                           SET status_pemesanan = @status, tanggal_pemesanan = NOW() 
-                           WHERE pemesanan_id = @id";
-            using var cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("status", status);
-            cmd.Parameters.AddWithValue("id", id);
-            return cmd.ExecuteNonQuery() > 0;
-        }
-        public decimal GetHargaPaket(int paketId)
+        public void UpdateStatusPembayaran(int pemesananId, string statusBaru)
         {
             using var conn = _dbKoneksi.Database();
             conn.Open();
 
-            string sql = "SELECT harga FROM paket_trips WHERE paket_id = @id";
+            string sql = "UPDATE pemesanans SET status_pembayaran = @status WHERE pemesanan_id = @id";
             using var cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("id", paketId);
-
-            var result = cmd.ExecuteScalar();
-            return result != null ? Convert.ToDecimal(result) : 0;
+            cmd.Parameters.AddWithValue("status", statusBaru);
+            cmd.Parameters.AddWithValue("id", pemesananId);
+            cmd.ExecuteNonQuery();
         }
+
+        public void HapusPemesanan(int pemesananId)
+        {
+            using var conn = _dbKoneksi.Database();
+            conn.Open();
+
+            string sql = "DELETE FROM pemesanans WHERE pemesanan_id = @id";
+            using var cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("id", pemesananId);
+            cmd.ExecuteNonQuery();
+        }
+
+
+
+
     }
 }
+

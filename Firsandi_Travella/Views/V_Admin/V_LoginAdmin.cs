@@ -47,7 +47,7 @@ namespace Travella_TA.Views
 
         private void Kembali_Click(object sender, EventArgs e)
         {
-            V_Halaman_Awal awal = new V_Halaman_Awal();
+            V_HalamanAwal awal = new V_HalamanAwal();
             awal.Show();
             this.Hide();
         }

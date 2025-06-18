@@ -1,4 +1,5 @@
-﻿using Firsandi_Travella.Interfaces;
+﻿using Firsandi_Travella.Helper;
+using Firsandi_Travella.Interfaces;
 using Firsandi_Travella.Models;
 using Firsandi_Travella.Presenter;
 using System;
@@ -30,7 +31,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
                 Size = new Size(800, 500),
-                Location = new Point(400, 180) 
+                Location = new Point(400, 180)
             };
 
             this.Controls.Add(flowLayoutPanelTrips);
@@ -52,7 +53,7 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             flowLayoutPanelTrips.Controls.Clear();
 
-            Console.WriteLine($"Total paket trip: {paketTrips.Count}"); 
+            Console.WriteLine($"Total paket trip: {paketTrips.Count}");
 
             foreach (var trip in paketTrips)
             {
@@ -140,7 +141,7 @@ namespace Firsandi_Travella.Views.V_Admin
             var confirm = MessageBox.Show($"Yakin hapus trip {trip.Nama}?", "Konfirmasi", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
-                _presenter.HapusPaketTrip(trip.Id); 
+                _presenter.HapusPaketTrip(trip.Id);
                 _presenter.LoadPaketTrips();
             }
         }
@@ -168,16 +169,54 @@ namespace Firsandi_Travella.Views.V_Admin
             this.Hide();
         }
 
-        private void Booking_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void Kembali_Click(object sender, EventArgs e)
         {
             V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
             v_DashboardAdmin.Show();
             this.Hide();
+        }
+
+        private void Beranda_Click_1(object sender, EventArgs e)
+        {
+            V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
+            v_DashboardAdmin.Show();
+            this.Hide();
+        }
+
+        private void PaketTrip_Click(object sender, EventArgs e)
+        {
+            V_KelolaPaketTrip kelolaPaketTrip = new V_KelolaPaketTrip();
+            kelolaPaketTrip.Show();
+            this.Hide();
+        }
+
+        private void Guide_Click(object sender, EventArgs e)
+        {
+            V_KelolaGuide v_KelolaGuide = new V_KelolaGuide();
+            v_KelolaGuide.Show();
+            this.Hide();
+        }
+
+        private void Transaksi_Click(object sender, EventArgs e)
+        {
+            V_KelolaPemesanan v_KelolaPemesanan = new V_KelolaPemesanan();
+            v_KelolaPemesanan.Show();
+            this.Hide();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Yakin ingin logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                SessionManager.ClearSession();
+
+                // Kembali ke halaman login
+                new V_LoginAdmin().Show();
+                this.Close(); // atau this.Hide();
+            }
         }
     }
 }

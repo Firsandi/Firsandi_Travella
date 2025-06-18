@@ -38,9 +38,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-21, 0);
+            pictureBox1.Location = new Point(-24, 0);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1225, 66);
+            pictureBox1.Size = new Size(1400, 88);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -49,24 +50,23 @@
             // 
             Kembali.BackgroundImage = (Image)resources.GetObject("Kembali.BackgroundImage");
             Kembali.Image = (Image)resources.GetObject("Kembali.Image");
-            Kembali.Location = new Point(12, 15);
+            Kembali.Location = new Point(14, 20);
+            Kembali.Margin = new Padding(3, 4, 3, 4);
             Kembali.Name = "Kembali";
-            Kembali.Size = new Size(146, 34);
+            Kembali.Size = new Size(167, 45);
             Kembali.SizeMode = PictureBoxSizeMode.Zoom;
             Kembali.TabIndex = 65;
             Kembali.TabStop = false;
             // 
             // V_DetailPaketTrips
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1104, 505);
+            ClientSize = new Size(1262, 673);
             Controls.Add(Kembali);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "V_DetailPaketTrips";
-            Text = "V_DetailPaketTrips";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)Kembali).EndInit();
             ResumeLayout(false);

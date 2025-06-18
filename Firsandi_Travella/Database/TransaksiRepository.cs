@@ -113,5 +113,18 @@ namespace Firsandi_Travella.Database
             cmd.Parameters.AddWithValue("id", pemesananId);
             return cmd.ExecuteNonQuery() > 0;
         }
+
+        public bool KonfirmasiPembayaran(int transaksiId)
+        {
+            using var conn = _dbKoneksi.Database();
+            conn.Open();
+            string sql = @"UPDATE transaksi_pembayarans 
+                   SET status = 'Dibayar', tanggal_pembayaran = NOW() 
+                   WHERE transaksi_id = @id";
+            using var cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("id", transaksiId);
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
     }
 }
