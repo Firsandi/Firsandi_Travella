@@ -71,7 +71,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database())
             {
                 conn.Open();
-                string sql = "DELETE FROM paket_trips WHERE id = @id";
+                string sql = "DELETE FROM paket_trips WHERE paket_id = @id";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {
@@ -85,7 +85,7 @@ namespace Firsandi_Travella.Database
             using (var conn = _dbKoneksi.Database()) // 🔥 Gunakan koneksi dari `KoneksiDatabase`
             {
                 conn.Open();
-                string query = "UPDATE paket_trips SET nama = @nama, harga = @harga, guide_id = @guide, deskripsi = @deskripsi, gambar_path = @gambar WHERE id = @paket_id";
+                string query = "UPDATE paket_trips SET nama = @nama, harga = @harga, guide_id = @guide, deskripsi = @deskripsi, gambar_path = @gambar WHERE paket_id = @paket_id";
 
                 using (var cmd = new NpgsqlCommand(query, conn)) // 🔥 Gunakan `conn`, bukan `_dbKoneksi`
                 {

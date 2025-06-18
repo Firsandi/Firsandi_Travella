@@ -40,6 +40,7 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             TambahGuide = new PictureBox();
+            Kembali = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -51,6 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TambahGuide).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Kembali).BeginInit();
             SuspendLayout();
             // 
             // pictureBox11
@@ -163,11 +165,24 @@
             TambahGuide.TabStop = false;
             TambahGuide.Click += TambahGuide_Click_1;
             // 
+            // Kembali
+            // 
+            Kembali.Image = (Image)resources.GetObject("Kembali.Image");
+            Kembali.Location = new Point(34, 25);
+            Kembali.Margin = new Padding(3, 4, 3, 4);
+            Kembali.Name = "Kembali";
+            Kembali.Size = new Size(167, 46);
+            Kembali.SizeMode = PictureBoxSizeMode.Zoom;
+            Kembali.TabIndex = 64;
+            Kembali.TabStop = false;
+            Kembali.Click += Kembali_Click_1;
+            // 
             // V_KelolaGuide
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 673);
+            Controls.Add(Kembali);
             Controls.Add(TambahGuide);
             Controls.Add(pictureBox11);
             Controls.Add(pictureBox9);
@@ -192,6 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)TambahGuide).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Kembali).EndInit();
             ResumeLayout(false);
         }
 
@@ -208,5 +224,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private PictureBox TambahGuide;
+        private PictureBox Kembali;
     }
 }

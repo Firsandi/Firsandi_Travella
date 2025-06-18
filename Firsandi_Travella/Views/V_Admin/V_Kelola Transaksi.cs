@@ -50,13 +50,6 @@ namespace Travella_TA.Views.V_Admin
                     Padding = new Padding(10)
                 };
 
-                //Label lblPaket = new Label
-                //{
-                //    Text = $"📦 Paket: {trx.Nama}",
-                //    Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                //    Location = new Point(10, 10),
-                //    AutoSize = true
-                //};
 
                 Label lblUser = new Label
                 {
@@ -72,12 +65,7 @@ namespace Travella_TA.Views.V_Admin
                     AutoSize = true
                 };
 
-                //Label lblMetode = new Label
-                //{
-                //    Text = $"💳 Metode: {trx.Metode}",
-                //    Location = new Point(10, 75),
-                //    AutoSize = true
-                //};
+            
 
                 Label lblStatus = new Label
                 {
@@ -125,5 +113,12 @@ namespace Travella_TA.Views.V_Admin
         public void TampilkanRiwayatTransaksi(List<TransaksiModels> _) { }
         public void ShowSuccess(string msg) => MessageBox.Show(msg, "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
         public void ShowError(string msg) => MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        private void Kembali_Click(object sender, EventArgs e)
+        {
+            V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
+            v_DashboardAdmin.Show();
+            this.Hide();
+        }
     }
 }

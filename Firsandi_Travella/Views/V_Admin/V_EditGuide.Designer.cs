@@ -45,6 +45,7 @@
             pictureBox1 = new PictureBox();
             TBNama = new TextBox();
             TBNomor = new TextBox();
+            Kembali = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)Ubah).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -59,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Kembali).BeginInit();
             SuspendLayout();
             // 
             // Ubah
@@ -221,11 +223,24 @@
             TBNomor.Size = new Size(588, 35);
             TBNomor.TabIndex = 78;
             // 
+            // Kembali
+            // 
+            Kembali.Image = (Image)resources.GetObject("Kembali.Image");
+            Kembali.Location = new Point(37, 25);
+            Kembali.Margin = new Padding(3, 4, 3, 4);
+            Kembali.Name = "Kembali";
+            Kembali.Size = new Size(167, 46);
+            Kembali.SizeMode = PictureBoxSizeMode.Zoom;
+            Kembali.TabIndex = 79;
+            Kembali.TabStop = false;
+            Kembali.Click += Kembali_Click;
+            // 
             // V_EditGuide
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 673);
+            Controls.Add(Kembali);
             Controls.Add(TBNomor);
             Controls.Add(TBNama);
             Controls.Add(Ubah);
@@ -258,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Kembali).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -280,5 +296,6 @@
         private PictureBox pictureBox1;
         private TextBox TBNama;
         private TextBox TBNomor;
+        private PictureBox Kembali;
     }
 }

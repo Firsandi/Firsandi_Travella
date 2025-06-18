@@ -124,7 +124,7 @@ namespace Firsandi_Travella.Views.V_Admin
                 _presenter.DeleteGuide(guide.Id);
             }
         }
-        
+
 
         public void ShowError(string message)
         {
@@ -161,6 +161,13 @@ namespace Firsandi_Travella.Views.V_Admin
         {
             V_TambahkanGuide v_TambahkanGuide = new V_TambahkanGuide();
             v_TambahkanGuide.Show();
+            this.Hide();
+        }
+
+        private void Kembali_Click_1(object sender, EventArgs e)
+        {
+            V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
+            v_DashboardAdmin.Show();
             this.Hide();
         }
     }

@@ -1,6 +1,6 @@
-﻿namespace Travella_TA.Views.V_Admin
+﻿namespace Firsandi_Travella.Views.V_Users
 {
-    partial class V_Kelola_Transaksi
+    partial class V_PemesananTrips
     {
         /// <summary>
         /// Required designer variable.
@@ -28,55 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Kelola_Transaksi));
-            pictureBox1 = new PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_PemesananTrips));
             Kembali = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Kembali).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, -7);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1400, 71);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // Kembali
             // 
             Kembali.Image = (Image)resources.GetObject("Kembali.Image");
-            Kembali.Location = new Point(12, 10);
+            Kembali.Location = new Point(1042, 602);
             Kembali.Margin = new Padding(3, 4, 3, 4);
             Kembali.Name = "Kembali";
             Kembali.Size = new Size(167, 46);
             Kembali.SizeMode = PictureBoxSizeMode.Zoom;
-            Kembali.TabIndex = 64;
+            Kembali.TabIndex = 65;
             Kembali.TabStop = false;
-            Kembali.Click += Kembali_Click;
             // 
-            // V_Kelola_Transaksi
+            // V_PemesananTrips
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 841);
+            ClientSize = new Size(1262, 673);
             Controls.Add(Kembali);
-            Controls.Add(pictureBox1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "V_Kelola_Transaksi";
-            Text = "V_Kelola_Transaksi";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Name = "V_PemesananTrips";
+            Text = "V_PemesananTrips";
             ((System.ComponentModel.ISupportInitialize)Kembali).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
         private PictureBox Kembali;
     }
 }
