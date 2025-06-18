@@ -1,7 +1,7 @@
+using Firsandi_Travella.Views;
 using Firsandi_Travella.Views.V_Admin;
 using Firsandi_Travella.Views.V_Users;
-using Travella_TA.Views;
-using Travella_TA.Views.V_Admin;
+
 
 namespace Firsandi_Travella
 {
@@ -19,7 +19,7 @@ namespace Firsandi_Travella
             //Application.Run(new V_PaketTripUser());
             //Application.Run(new V_Halaman_Awal());
             //Application.Run(new V_PaketTripUser());
-            Application.Run(new V_Halaman_Awal());
+            Application.Run(new V_HalamanAwal());
             //Application.Run(new V_PaketTripUser());
         }
     }

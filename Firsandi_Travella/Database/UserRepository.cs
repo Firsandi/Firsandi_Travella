@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Firsandi_Travella.Database;
+using Firsandi_Travella.Models;
+using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Firsandi_Travella.Database;
-using Npgsql;
 
 namespace Firsandi_Travella.Database
 {
@@ -55,6 +56,29 @@ namespace Firsandi_Travella.Database
                     return cmd.ExecuteNonQuery() > 0; // Berhasil jika lebih dari 0 baris terpengaruh
                 }
             }
+        }
+        public UserModels GetUserByLogin(string username, string password)
+        {
+            using var conn = _dbKoneksi.Database();
+            conn.Open();
+
+            string sql = "SELECT * FROM users WHERE username = @username AND password = @password"; // Pastikan password sudah di-hash!
+            using var cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("username", username);
+            cmd.Parameters.AddWithValue("password", password);
+
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return new UserModels
+                {
+                    Id = reader.GetInt32(0),
+                    Username = reader.GetString(1),
+                    Password = reader.GetString(2) // Jika simpan hash, lebih baik jangan kembalikan ini
+                };
+            }
+
+            return null; // ✅ Menangani kasus user tidak ditemukan
         }
 
 

@@ -55,7 +55,7 @@ namespace Firsandi_Travella.Views.V_Users
 
         private void balik_Click(object sender, EventArgs e)
         {
-            V_Halaman_Awal awal = new V_Halaman_Awal();
+            V_HalamanAwal awal = new V_HalamanAwal();
             awal.Show();
             this.Hide();
         }
@@ -68,6 +68,13 @@ namespace Firsandi_Travella.Views.V_Users
         }
 
         private void Tidakpunyakun_Click(object sender, EventArgs e)
+        {
+            V_Register v_Register = new V_Register();
+            v_Register.Show();
+            this.Hide();
+        }
+
+        private void DaftarDisini_Click(object sender, EventArgs e)
         {
             V_Register v_Register = new V_Register();
             v_Register.Show();

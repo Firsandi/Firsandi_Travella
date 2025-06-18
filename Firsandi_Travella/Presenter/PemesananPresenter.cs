@@ -15,27 +15,22 @@ namespace Firsandi_Travella.Presenter
             _repo = new PemesananRepository();
         }
 
-        public void LoadMetodePembayaran()
+        public void SimpanPemesanan(PemesananModels pemesanan)
         {
-            var metodeList = _repo.GetMetode();
-            _view.TampilkanMetode(metodeList);
-        }
-
-        public void SubmitPemesanan(PemesananModels model)
-        {
-            bool sukses = _repo.SimpanPemesananLangsung(model);
-
-            if (sukses)
-                _view.ShowSuccess("Pemesanan berhasil dan otomatis dikonfirmasi.");
+            int pemesananId = _repo.SimpanPemesanan(pemesanan);
+            if (pemesananId > 0)
+                _view.TampilkanPesan($"✅ Pemesanan Berhasil! ID: {pemesananId}");
             else
-                _view.ShowError("Gagal menyimpan pemesanan.");
+                _view.TampilkanPesan("❌ Pemesanan Gagal!");
         }
 
-        public void AmbilDaftarBank(int metodeId)
+
+        public List<PemesananModels> GetRiwayatPemesananUser(int userId)
         {
-            var daftar = _repo.GetBankByMetode(metodeId);
-            _view.TampilkanDaftarBank(daftar);
+            return _repo.GetPemesananByUser(userId); // method ini akan kita buat juga kalau belum
         }
+
+
 
     }
 }

@@ -63,9 +63,10 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(1, -5);
+            pictureBox2.Location = new Point(1, -7);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1102, 76);
+            pictureBox2.Size = new Size(1259, 101);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 20;
             pictureBox2.TabStop = false;
@@ -74,9 +75,10 @@
             // btnMulaiPerjalan
             // 
             btnMulaiPerjalan.Image = (Image)resources.GetObject("btnMulaiPerjalan.Image");
-            btnMulaiPerjalan.Location = new Point(969, 655);
+            btnMulaiPerjalan.Location = new Point(1107, 873);
+            btnMulaiPerjalan.Margin = new Padding(3, 4, 3, 4);
             btnMulaiPerjalan.Name = "btnMulaiPerjalan";
-            btnMulaiPerjalan.Size = new Size(168, 34);
+            btnMulaiPerjalan.Size = new Size(192, 45);
             btnMulaiPerjalan.SizeMode = PictureBoxSizeMode.Zoom;
             btnMulaiPerjalan.TabIndex = 34;
             btnMulaiPerjalan.TabStop = false;
@@ -84,9 +86,10 @@
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(268, 154);
+            pictureBox8.Location = new Point(306, 205);
+            pictureBox8.Margin = new Padding(3, 4, 3, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(193, 187);
+            pictureBox8.Size = new Size(221, 249);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox8.TabIndex = 42;
             pictureBox8.TabStop = false;
@@ -95,9 +98,10 @@
             // 
             pictureBox5.BackColor = SystemColors.ActiveBorder;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(248, 132);
+            pictureBox5.Location = new Point(283, 176);
+            pictureBox5.Margin = new Padding(3, 4, 3, 4);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(812, 231);
+            pictureBox5.Size = new Size(928, 308);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 41;
             pictureBox5.TabStop = false;
@@ -106,48 +110,55 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(267, 92);
+            label1.Location = new Point(305, 123);
             label1.Name = "label1";
-            label1.Size = new Size(540, 34);
+            label1.Size = new Size(701, 44);
             label1.TabIndex = 40;
             label1.Text = "Selamat Datang di Aplikasi TRAVELLA";
             // 
             // btnPaketTrip
             // 
             btnPaketTrip.Image = (Image)resources.GetObject("btnPaketTrip.Image");
-            btnPaketTrip.Location = new Point(14, 124);
+            btnPaketTrip.Location = new Point(16, 165);
+            btnPaketTrip.Margin = new Padding(3, 4, 3, 4);
             btnPaketTrip.Name = "btnPaketTrip";
-            btnPaketTrip.Size = new Size(185, 34);
+            btnPaketTrip.Size = new Size(211, 45);
             btnPaketTrip.SizeMode = PictureBoxSizeMode.Zoom;
             btnPaketTrip.TabIndex = 39;
             btnPaketTrip.TabStop = false;
+            btnPaketTrip.Click += btnPaketTrip_Click;
             // 
             // btnBeranda
             // 
             btnBeranda.Image = (Image)resources.GetObject("btnBeranda.Image");
-            btnBeranda.Location = new Point(14, 76);
+            btnBeranda.Location = new Point(16, 101);
+            btnBeranda.Margin = new Padding(3, 4, 3, 4);
             btnBeranda.Name = "btnBeranda";
-            btnBeranda.Size = new Size(185, 34);
+            btnBeranda.Size = new Size(211, 45);
             btnBeranda.SizeMode = PictureBoxSizeMode.Zoom;
             btnBeranda.TabIndex = 38;
             btnBeranda.TabStop = false;
+            btnBeranda.Click += btnBeranda_Click;
             // 
             // btnRiwayatPemesanan
             // 
             btnRiwayatPemesanan.Image = (Image)resources.GetObject("btnRiwayatPemesanan.Image");
-            btnRiwayatPemesanan.Location = new Point(14, 172);
+            btnRiwayatPemesanan.Location = new Point(16, 229);
+            btnRiwayatPemesanan.Margin = new Padding(3, 4, 3, 4);
             btnRiwayatPemesanan.Name = "btnRiwayatPemesanan";
-            btnRiwayatPemesanan.Size = new Size(185, 34);
+            btnRiwayatPemesanan.Size = new Size(211, 45);
             btnRiwayatPemesanan.SizeMode = PictureBoxSizeMode.Zoom;
             btnRiwayatPemesanan.TabIndex = 37;
             btnRiwayatPemesanan.TabStop = false;
+            btnRiwayatPemesanan.Click += btnRiwayatPemesanan_Click;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(904, 576);
+            pictureBox3.Location = new Point(1033, 768);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(168, 34);
+            pictureBox3.Size = new Size(192, 45);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 45;
             pictureBox3.TabStop = false;
@@ -155,10 +166,9 @@
             // pictureBox9
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(27, 587);
-            pictureBox9.Margin = new Padding(3, 2, 3, 2);
+            pictureBox9.Location = new Point(31, 783);
             pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(185, 34);
+            pictureBox9.Size = new Size(211, 45);
             pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox9.TabIndex = 50;
             pictureBox9.TabStop = false;
@@ -166,10 +176,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1, -5);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(1, -7);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(217, 509);
+            pictureBox1.Size = new Size(248, 679);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 51;
             pictureBox1.TabStop = false;
@@ -177,10 +186,9 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(14, 445);
-            pictureBox4.Margin = new Padding(3, 2, 3, 2);
+            pictureBox4.Location = new Point(16, 593);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(185, 34);
+            pictureBox4.Size = new Size(211, 45);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 52;
             pictureBox4.TabStop = false;
@@ -188,9 +196,10 @@
             // MulaiPerjalanan
             // 
             MulaiPerjalanan.Image = (Image)resources.GetObject("MulaiPerjalanan.Image");
-            MulaiPerjalanan.Location = new Point(878, 461);
+            MulaiPerjalanan.Location = new Point(1003, 615);
+            MulaiPerjalanan.Margin = new Padding(3, 4, 3, 4);
             MulaiPerjalanan.Name = "MulaiPerjalanan";
-            MulaiPerjalanan.Size = new Size(168, 34);
+            MulaiPerjalanan.Size = new Size(192, 45);
             MulaiPerjalanan.SizeMode = PictureBoxSizeMode.Zoom;
             MulaiPerjalanan.TabIndex = 53;
             MulaiPerjalanan.TabStop = false;
@@ -199,9 +208,10 @@
             // pictureBox7
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(498, 171);
+            pictureBox7.Location = new Point(569, 228);
+            pictureBox7.Margin = new Padding(3, 4, 3, 4);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(492, 153);
+            pictureBox7.Size = new Size(562, 204);
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox7.TabIndex = 54;
             pictureBox7.TabStop = false;
@@ -209,19 +219,20 @@
             // pictureBox10
             // 
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(248, 369);
+            pictureBox10.Location = new Point(283, 492);
+            pictureBox10.Margin = new Padding(3, 4, 3, 4);
             pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(444, 94);
+            pictureBox10.Size = new Size(507, 125);
             pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox10.TabIndex = 55;
             pictureBox10.TabStop = false;
             // 
             // V_DashboardUser
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1104, 505);
+            ClientSize = new Size(1262, 673);
             Controls.Add(pictureBox10);
             Controls.Add(pictureBox7);
             Controls.Add(MulaiPerjalanan);
@@ -237,6 +248,7 @@
             Controls.Add(btnMulaiPerjalan);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "V_DashboardUser";
             Text = "V_DashboardUser";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
