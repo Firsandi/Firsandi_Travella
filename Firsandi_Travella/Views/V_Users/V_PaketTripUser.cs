@@ -110,6 +110,7 @@ namespace Firsandi_Travella.Views.V_Users
         {
             V_DetailPaketTrips detailForm = new V_DetailPaketTrips(paket);
             detailForm.ShowDialog();
+            this.Hide();
         }
 
         public void ShowError(string message)

@@ -39,7 +39,6 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             balik = new PictureBox();
-            Tidakpunyakun = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)DaftarDisini).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)LoginUser).BeginInit();
@@ -48,17 +47,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)balik).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Tidakpunyakun).BeginInit();
             SuspendLayout();
             // 
             // DaftarDisini
             // 
             DaftarDisini.BackgroundImage = (Image)resources.GetObject("DaftarDisini.BackgroundImage");
             DaftarDisini.Image = (Image)resources.GetObject("DaftarDisini.Image");
-            DaftarDisini.Location = new Point(613, 676);
-            DaftarDisini.Margin = new Padding(3, 4, 3, 4);
+            DaftarDisini.Location = new Point(536, 449);
             DaftarDisini.Name = "DaftarDisini";
-            DaftarDisini.Size = new Size(641, 25);
+            DaftarDisini.Size = new Size(561, 19);
             DaftarDisini.SizeMode = PictureBoxSizeMode.Zoom;
             DaftarDisini.TabIndex = 27;
             DaftarDisini.TabStop = false;
@@ -66,31 +63,28 @@
             // TBPassword
             // 
             TBPassword.BorderStyle = BorderStyle.None;
-            TBPassword.Font = new Font("Arial", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TBPassword.Location = new Point(758, 367);
-            TBPassword.Margin = new Padding(3, 4, 3, 4);
+            TBPassword.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBPassword.Location = new Point(663, 278);
             TBPassword.Name = "TBPassword";
-            TBPassword.Size = new Size(449, 43);
+            TBPassword.Size = new Size(356, 25);
             TBPassword.TabIndex = 26;
             // 
             // TBUsername
             // 
             TBUsername.BorderStyle = BorderStyle.None;
-            TBUsername.Font = new Font("Arial", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TBUsername.Location = new Point(758, 231);
-            TBUsername.Margin = new Padding(3, 4, 3, 4);
+            TBUsername.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBUsername.Location = new Point(663, 178);
             TBUsername.Name = "TBUsername";
-            TBUsername.Size = new Size(449, 43);
+            TBUsername.Size = new Size(356, 25);
             TBUsername.TabIndex = 25;
             // 
             // pictureBox6
             // 
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(613, 38);
-            pictureBox6.Margin = new Padding(3, 4, 3, 4);
+            pictureBox6.Location = new Point(536, 28);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(653, 65);
+            pictureBox6.Size = new Size(571, 49);
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox6.TabIndex = 24;
             pictureBox6.TabStop = false;
@@ -100,10 +94,9 @@
             // 
             LoginUser.BackgroundImage = (Image)resources.GetObject("LoginUser.BackgroundImage");
             LoginUser.Image = (Image)resources.GetObject("LoginUser.Image");
-            LoginUser.Location = new Point(791, 449);
-            LoginUser.Margin = new Padding(3, 4, 3, 4);
+            LoginUser.Location = new Point(692, 337);
             LoginUser.Name = "LoginUser";
-            LoginUser.Size = new Size(275, 141);
+            LoginUser.Size = new Size(241, 106);
             LoginUser.SizeMode = PictureBoxSizeMode.Zoom;
             LoginUser.TabIndex = 23;
             LoginUser.TabStop = false;
@@ -112,10 +105,9 @@
             // Kembali
             // 
             Kembali.Image = (Image)resources.GetObject("Kembali.Image");
-            Kembali.Location = new Point(-4, -73);
-            Kembali.Margin = new Padding(3, 4, 3, 4);
+            Kembali.Location = new Point(-4, -55);
             Kembali.Name = "Kembali";
-            Kembali.Size = new Size(167, 46);
+            Kembali.Size = new Size(146, 34);
             Kembali.SizeMode = PictureBoxSizeMode.Zoom;
             Kembali.TabIndex = 22;
             Kembali.TabStop = false;
@@ -123,10 +115,9 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(70, 64);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
+            pictureBox3.Location = new Point(61, 48);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(394, 526);
+            pictureBox3.Size = new Size(345, 394);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 21;
             pictureBox3.TabStop = false;
@@ -135,10 +126,9 @@
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(613, 158);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Location = new Point(536, 118);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(653, 270);
+            pictureBox2.Size = new Size(571, 202);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 20;
             pictureBox2.TabStop = false;
@@ -146,10 +136,9 @@
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Location = new Point(613, -89);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(536, -63);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(653, 851);
+            pictureBox1.Size = new Size(571, 638);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 19;
             pictureBox1.TabStop = false;
@@ -157,34 +146,20 @@
             // balik
             // 
             balik.Image = (Image)resources.GetObject("balik.Image");
-            balik.Location = new Point(29, 10);
-            balik.Margin = new Padding(3, 4, 3, 4);
+            balik.Location = new Point(25, 8);
             balik.Name = "balik";
-            balik.Size = new Size(167, 46);
+            balik.Size = new Size(146, 34);
             balik.SizeMode = PictureBoxSizeMode.Zoom;
             balik.TabIndex = 28;
             balik.TabStop = false;
             balik.Click += balik_Click;
             // 
-            // Tidakpunyakun
-            // 
-            Tidakpunyakun.BackgroundImage = (Image)resources.GetObject("Tidakpunyakun.BackgroundImage");
-            Tidakpunyakun.Image = (Image)resources.GetObject("Tidakpunyakun.Image");
-            Tidakpunyakun.Location = new Point(613, 633);
-            Tidakpunyakun.Margin = new Padding(3, 4, 3, 4);
-            Tidakpunyakun.Name = "Tidakpunyakun";
-            Tidakpunyakun.Size = new Size(653, 27);
-            Tidakpunyakun.SizeMode = PictureBoxSizeMode.Zoom;
-            Tidakpunyakun.TabIndex = 29;
-            Tidakpunyakun.TabStop = false;
-            Tidakpunyakun.Click += Tidakpunyakun_Click;
-            // 
             // V_LoginUserForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 673);
-            Controls.Add(Tidakpunyakun);
+            BackColor = Color.White;
+            ClientSize = new Size(1264, 681);
             Controls.Add(balik);
             Controls.Add(DaftarDisini);
             Controls.Add(TBPassword);
@@ -195,6 +170,7 @@
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "V_LoginUserForm";
             Text = "V_LoginUserForm";
             ((System.ComponentModel.ISupportInitialize)DaftarDisini).EndInit();
@@ -205,7 +181,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)balik).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Tidakpunyakun).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -222,6 +197,5 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private PictureBox balik;
-        private PictureBox Tidakpunyakun;
     }
 }

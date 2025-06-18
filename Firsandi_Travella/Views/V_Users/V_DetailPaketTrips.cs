@@ -111,6 +111,7 @@ namespace Firsandi_Travella.Views.V_Users
         {
             V_PemesananTrips pemesananForm = new V_PemesananTrips(paketId);
             pemesananForm.ShowDialog();
+            this.Hide();
         }
     }
 }

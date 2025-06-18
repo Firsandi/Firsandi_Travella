@@ -65,7 +65,7 @@ namespace Travella_TA.Views.V_Admin
                     AutoSize = true
                 };
 
-            
+
 
                 Label lblStatus = new Label
                 {
@@ -107,6 +107,7 @@ namespace Travella_TA.Views.V_Admin
             if (confirm == DialogResult.Yes)
             {
                 _presenter.KonfirmasiTransaksi(transaksiId);
+                this.Hide();
             }
         }
 
@@ -119,6 +120,11 @@ namespace Travella_TA.Views.V_Admin
             V_DashboardAdmin v_DashboardAdmin = new V_DashboardAdmin();
             v_DashboardAdmin.Show();
             this.Hide();
+        }
+
+        private void V_Kelola_Transaksi_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

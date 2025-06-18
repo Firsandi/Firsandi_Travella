@@ -51,5 +51,10 @@ namespace Travella_TA.Views
             awal.Show();
             this.Hide();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

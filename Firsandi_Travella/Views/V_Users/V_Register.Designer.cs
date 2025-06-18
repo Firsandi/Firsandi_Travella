@@ -49,10 +49,9 @@
             // Kembali
             // 
             Kembali.Image = (Image)resources.GetObject("Kembali.Image");
-            Kembali.Location = new Point(12, 15);
-            Kembali.Margin = new Padding(3, 4, 3, 4);
+            Kembali.Location = new Point(10, 11);
             Kembali.Name = "Kembali";
-            Kembali.Size = new Size(167, 46);
+            Kembali.Size = new Size(146, 34);
             Kembali.SizeMode = PictureBoxSizeMode.Zoom;
             Kembali.TabIndex = 3;
             Kembali.TabStop = false;
@@ -61,10 +60,9 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(86, 151);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
+            pictureBox3.Location = new Point(75, 113);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(394, 526);
+            pictureBox3.Size = new Size(345, 394);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
@@ -73,10 +71,9 @@
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Location = new Point(629, -1);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(550, -1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(635, 851);
+            pictureBox1.Size = new Size(556, 638);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -85,10 +82,9 @@
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(629, 34);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Location = new Point(550, 26);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(635, 726);
+            pictureBox2.Size = new Size(556, 544);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -97,61 +93,55 @@
             // TBNama
             // 
             TBNama.BorderStyle = BorderStyle.None;
-            TBNama.Location = new Point(782, 201);
-            TBNama.Margin = new Padding(3, 4, 3, 4);
+            TBNama.Location = new Point(684, 151);
             TBNama.Multiline = true;
             TBNama.Name = "TBNama";
-            TBNama.Size = new Size(377, 66);
+            TBNama.Size = new Size(330, 50);
             TBNama.TabIndex = 17;
             TBNama.TextChanged += Nama_TextChanged;
             // 
             // TBEmail
             // 
             TBEmail.BorderStyle = BorderStyle.None;
-            TBEmail.Location = new Point(782, 321);
-            TBEmail.Margin = new Padding(3, 4, 3, 4);
+            TBEmail.Location = new Point(684, 241);
             TBEmail.Multiline = true;
             TBEmail.Name = "TBEmail";
-            TBEmail.Size = new Size(377, 66);
+            TBEmail.Size = new Size(330, 50);
             TBEmail.TabIndex = 18;
             // 
             // TBNomor
             // 
             TBNomor.BorderStyle = BorderStyle.None;
-            TBNomor.Location = new Point(782, 450);
-            TBNomor.Margin = new Padding(3, 4, 3, 4);
+            TBNomor.Location = new Point(684, 338);
             TBNomor.Multiline = true;
             TBNomor.Name = "TBNomor";
-            TBNomor.Size = new Size(377, 66);
+            TBNomor.Size = new Size(330, 50);
             TBNomor.TabIndex = 19;
             // 
             // TBUsername
             // 
             TBUsername.BorderStyle = BorderStyle.None;
-            TBUsername.Location = new Point(782, 570);
-            TBUsername.Margin = new Padding(3, 4, 3, 4);
+            TBUsername.Location = new Point(684, 428);
             TBUsername.Multiline = true;
             TBUsername.Name = "TBUsername";
-            TBUsername.Size = new Size(377, 66);
+            TBUsername.Size = new Size(330, 50);
             TBUsername.TabIndex = 20;
             // 
             // TBPassword
             // 
             TBPassword.BorderStyle = BorderStyle.None;
-            TBPassword.Location = new Point(782, 694);
-            TBPassword.Margin = new Padding(3, 4, 3, 4);
+            TBPassword.Location = new Point(684, 520);
             TBPassword.Multiline = true;
             TBPassword.Name = "TBPassword";
-            TBPassword.Size = new Size(377, 66);
+            TBPassword.Size = new Size(330, 50);
             TBPassword.TabIndex = 21;
             // 
             // Daftar
             // 
             Daftar.Image = (Image)resources.GetObject("Daftar.Image");
-            Daftar.Location = new Point(147, 725);
-            Daftar.Margin = new Padding(3, 4, 3, 4);
+            Daftar.Location = new Point(129, 544);
             Daftar.Name = "Daftar";
-            Daftar.Size = new Size(264, 101);
+            Daftar.Size = new Size(231, 76);
             Daftar.SizeMode = PictureBoxSizeMode.Zoom;
             Daftar.TabIndex = 22;
             Daftar.TabStop = false;
@@ -159,9 +149,10 @@
             // 
             // V_Register
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 841);
+            BackColor = Color.White;
+            ClientSize = new Size(1104, 526);
             Controls.Add(Daftar);
             Controls.Add(TBPassword);
             Controls.Add(TBUsername);
@@ -172,7 +163,6 @@
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "V_Register";
             Text = "V_Register";
             ((System.ComponentModel.ISupportInitialize)Kembali).EndInit();
