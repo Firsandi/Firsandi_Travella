@@ -107,6 +107,7 @@ namespace Travella_TA.Views.V_Admin
             if (confirm == DialogResult.Yes)
             {
                 _presenter.KonfirmasiTransaksi(transaksiId);
+                this.Hide();
             }
         }
 

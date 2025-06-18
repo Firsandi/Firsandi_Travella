@@ -32,6 +32,7 @@ namespace Firsandi_Travella.Views.V_Users
             _presenter = new PemesananPresenter(this);
             InisialisasiKomponen();
             _presenter.LoadMetodePembayaran();
+
         }
 
         private void InisialisasiKomponen()
@@ -150,9 +151,6 @@ namespace Firsandi_Travella.Views.V_Users
 
             _presenter.SubmitPemesanan(model);
             this.Hide();
-
-            //var riwayat = new V_Riwayat(_userId);
-            //riwayat.ShowDialog();
         }
 
         public void TampilkanMetode(List<MetodePembayaranModels> metodeList)
