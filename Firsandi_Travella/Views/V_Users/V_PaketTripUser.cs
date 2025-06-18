@@ -14,16 +14,18 @@ namespace Firsandi_Travella.Views.V_Users
     {
         private PaketTripPresenter _presenter;
         private FlowLayoutPanel flowLayoutPanelTrips;
+
         public V_PaketTripUser()
         {
             InitializeComponent();
+
             Label lblJudul = new Label
             {
                 Text = "Daftar Paket Trip",
                 Font = new Font("Segoe UI", 22, FontStyle.Bold),
                 ForeColor = Color.FromArgb(30, 30, 30),
                 AutoSize = true,
-                Location = new Point(250, 90) 
+                Location = new Point(250, 90)
             };
 
             flowLayoutPanelTrips = new FlowLayoutPanel
@@ -42,7 +44,7 @@ namespace Firsandi_Travella.Views.V_Users
             _presenter = new PaketTripPresenter(this);
             _presenter.LoadPaketTrips();
         }
-        
+
         public void ShowPaketTrips(List<PaketTripModels> paketTrips)
         {
             flowLayoutPanelTrips.Controls.Clear();
@@ -52,13 +54,11 @@ namespace Firsandi_Travella.Views.V_Users
             {
                 Panel card = new Panel
                 {
-
                     Size = new Size(700, 100),
                     BackColor = Color.FromArgb(173, 205, 255),
                     Padding = new Padding(10),
                     Margin = new Padding(15),
                     BorderStyle = BorderStyle.FixedSingle,
-
                 };
 
                 PictureBox pb = new PictureBox
@@ -104,13 +104,13 @@ namespace Firsandi_Travella.Views.V_Users
 
                 flowLayoutPanelTrips.Controls.Add(card);
             }
-
         }
 
         public void ShowDetailPaket(PaketTripModels paket)
         {
-            V_DetailTrips detailForm = new V_DetailTrips(paket);
+            V_DetailPaketTrips detailForm = new V_DetailPaketTrips(paket);
             detailForm.ShowDialog();
+            this.Hide();
         }
 
         public void ShowError(string message)
@@ -122,8 +122,6 @@ namespace Firsandi_Travella.Views.V_Users
         {
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        
     }
 }
 

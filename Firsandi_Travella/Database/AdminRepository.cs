@@ -23,7 +23,7 @@ namespace Firsandi_Travella.Database
                 using (var conn = _dbKoneksi.Database())
                 {
                     conn.Open();
-                    string sql = "SELECT id_admin FROM admins WHERE username = @username AND password = @password";
+                    string sql = "SELECT admin_id FROM admins WHERE username = @username AND password = @password";
 
                     using (var cmd = new NpgsqlCommand(sql, conn))
                     {

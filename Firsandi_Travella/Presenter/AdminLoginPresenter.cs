@@ -27,6 +27,5 @@ namespace Firsandi_Travella.Presenter
             else
                 _view.ShowError("Login gagal! Periksa kembali username dan password Anda.");
         }
-
     }
 }

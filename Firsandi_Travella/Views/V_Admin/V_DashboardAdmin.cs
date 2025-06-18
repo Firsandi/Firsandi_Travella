@@ -32,5 +32,12 @@ namespace Travella_TA.Views
             kelolaTransaksi.Show();
             this.Hide();
         }
+
+        private void Guide_Click(object sender, EventArgs e)
+        {
+            V_KelolaGuide kelolaGuide= new V_KelolaGuide();
+            kelolaGuide.Show();
+            this.Hide();
+        }
     }
 }

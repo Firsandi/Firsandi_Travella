@@ -40,10 +40,6 @@ namespace Travella_TA.Views
             this.Hide();
         }
 
-     
-
-        
-
         private void Login_Click(object sender, EventArgs e)
         {
             _presenter.LoginAdmin();
@@ -54,6 +50,11 @@ namespace Travella_TA.Views
             V_Halaman_Awal awal = new V_Halaman_Awal();
             awal.Show();
             this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

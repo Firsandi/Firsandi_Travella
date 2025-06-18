@@ -17,7 +17,9 @@ namespace Firsandi_Travella
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new V_PaketTripUser());
-            Application.Run(new V_Kelola_Transaksi());
+            //Application.Run(new V_Halaman_Awal());
+            //Application.Run(new V_PaketTripUser());
+            Application.Run(new V_Halaman_Awal());
             //Application.Run(new V_PaketTripUser());
         }
     }
