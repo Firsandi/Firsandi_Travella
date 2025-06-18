@@ -56,5 +56,12 @@ namespace Firsandi_Travella.Views.V_Admin
         {
 
         }
+
+        private void Kembali_Click(object sender, EventArgs e)
+        {
+            V_KelolaGuide v_KelolaGuide = new V_KelolaGuide();
+            v_KelolaGuide.Show();
+            this.Hide();
+        }
     }
 }

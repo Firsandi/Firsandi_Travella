@@ -1,6 +1,6 @@
 ﻿namespace Firsandi_Travella.Views.V_Users
 {
-    partial class V_DetailTrips
+    partial class V_DetailPaketTrips
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_DetailTrips));
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-6, -3);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1400, 71);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // V_DetailTrips
+            // V_DetailPaketTrips
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 673);
-            Controls.Add(pictureBox1);
-            Name = "V_DetailTrips";
-            Text = "V_DetailTrips";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Name = "V_DetailPaketTrips";
+            Text = "V_DetailPaketTrips";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
     }
 }

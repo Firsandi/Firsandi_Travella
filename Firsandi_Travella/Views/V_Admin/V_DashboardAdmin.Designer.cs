@@ -33,8 +33,6 @@
             pictureBox8 = new PictureBox();
             Guide = new PictureBox();
             PaketTrip = new PictureBox();
-            Booking = new PictureBox();
-            Review = new PictureBox();
             Transaksi = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
@@ -42,8 +40,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Guide).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PaketTrip).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Booking).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Review).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Transaksi).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -72,43 +68,24 @@
             // Guide
             // 
             Guide.Image = (Image)resources.GetObject("Guide.Image");
-            Guide.Location = new Point(805, 426);
+            Guide.Location = new Point(777, 229);
             Guide.Name = "Guide";
             Guide.Size = new Size(242, 177);
             Guide.SizeMode = PictureBoxSizeMode.Zoom;
             Guide.TabIndex = 15;
             Guide.TabStop = false;
+            Guide.Click += Guide_Click;
             // 
             // PaketTrip
             // 
             PaketTrip.Image = (Image)resources.GetObject("PaketTrip.Image");
-            PaketTrip.Location = new Point(256, 426);
+            PaketTrip.Location = new Point(516, 442);
             PaketTrip.Name = "PaketTrip";
             PaketTrip.Size = new Size(242, 177);
             PaketTrip.SizeMode = PictureBoxSizeMode.Zoom;
             PaketTrip.TabIndex = 14;
             PaketTrip.TabStop = false;
             PaketTrip.Click += PaketTrip_Click_1;
-            // 
-            // Booking
-            // 
-            Booking.Image = (Image)resources.GetObject("Booking.Image");
-            Booking.Location = new Point(530, 426);
-            Booking.Name = "Booking";
-            Booking.Size = new Size(242, 177);
-            Booking.SizeMode = PictureBoxSizeMode.Zoom;
-            Booking.TabIndex = 13;
-            Booking.TabStop = false;
-            // 
-            // Review
-            // 
-            Review.Image = (Image)resources.GetObject("Review.Image");
-            Review.Location = new Point(768, 220);
-            Review.Name = "Review";
-            Review.Size = new Size(183, 186);
-            Review.SizeMode = PictureBoxSizeMode.Zoom;
-            Review.TabIndex = 12;
-            Review.TabStop = false;
             // 
             // Transaksi
             // 
@@ -150,8 +127,6 @@
             Controls.Add(pictureBox8);
             Controls.Add(Guide);
             Controls.Add(PaketTrip);
-            Controls.Add(Booking);
-            Controls.Add(Review);
             Controls.Add(Transaksi);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -162,8 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)Guide).EndInit();
             ((System.ComponentModel.ISupportInitialize)PaketTrip).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Booking).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Review).EndInit();
             ((System.ComponentModel.ISupportInitialize)Transaksi).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -177,8 +150,6 @@
         private PictureBox pictureBox8;
         private PictureBox Guide;
         private PictureBox PaketTrip;
-        private PictureBox Booking;
-        private PictureBox Review;
         private PictureBox Transaksi;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;

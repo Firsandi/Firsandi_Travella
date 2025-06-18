@@ -40,10 +40,6 @@ namespace Travella_TA.Views
             this.Hide();
         }
 
-     
-
-        
-
         private void Login_Click(object sender, EventArgs e)
         {
             _presenter.LoginAdmin();
